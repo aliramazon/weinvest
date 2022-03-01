@@ -85,4 +85,19 @@ const GlobalStyle = createGlobalStyle`${css`
     html {
         font-size: 62.5%;
     }
+
+    html,
+    body {
+        -webkit-text-rendering: optimizeLegibility;
+        text-rendering: optimizeLegibility;
+        text-size-adjust: none;
+        -webkit-text-size-adjust: none;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+    a {
+        text-decoration: none;
+    }
 `}`;
