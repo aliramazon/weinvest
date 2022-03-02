@@ -21,6 +21,8 @@ const GlobalStyle = createGlobalStyle`${css`
         --primaryColor-40: #3d9e4ff;
         --primaryColor-30: #ecf2ff;
 
+        --whiteColor: #ffffff;
+
         // SPACING
         --spacing-1: 0.2rem;
         --spacing-2: 0.4rem;
@@ -81,6 +83,7 @@ const GlobalStyle = createGlobalStyle`${css`
 
     body {
         box-sizing: border-box;
+        background-color: var(--generalColor-30);
     }
     html {
         font-size: 62.5%;
@@ -101,3 +104,5 @@ const GlobalStyle = createGlobalStyle`${css`
         text-decoration: none;
     }
 `}`;
+
+export default GlobalStyle;

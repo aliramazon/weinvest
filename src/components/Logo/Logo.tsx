@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import logo from '../images/logo.svg';
 
 interface LogoProps {
     height?: string;
