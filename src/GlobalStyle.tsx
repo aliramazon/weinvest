@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`${css`
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap');
     :root {
         // COLORS
         --generalColor-100: #131523;
@@ -66,6 +67,7 @@ const GlobalStyle = createGlobalStyle`${css`
         --line-height-11: 7.6rem;
         --line-height-12: 9.2rem;
 
+        --font-weight-200: 200;
         --font-weight-300: 300;
         --font-weight-400: 400;
         --font-weight-500: 500;
@@ -91,10 +93,11 @@ const GlobalStyle = createGlobalStyle`${css`
 
     html,
     body {
-        -webkit-text-rendering: optimizeLegibility;
-        text-rendering: optimizeLegibility;
+        // -webkit-text-rendering: optimizeLegibility;
+        // text-rendering: optimizeLegibility;
         text-size-adjust: none;
         -webkit-text-size-adjust: none;
+        font-family: 'Inter', sans-serif;
     }
 
     ul {

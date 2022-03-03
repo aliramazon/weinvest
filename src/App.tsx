@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { Header, SideNavigation } from './components';
+import { Header, SideNav } from './components';
 import GlobalStyle from './GlobalStyle';
 
 const AppBase = styled.div`
@@ -15,7 +15,7 @@ function App() {
             <GlobalStyle />
             <AppBase>
                 <Header />
-                <SideNavigation />
+                <SideNav />
                 <Outlet />
             </AppBase>
         </>

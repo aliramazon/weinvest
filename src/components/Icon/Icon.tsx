@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import sprite from '../../images/sprite.svg';
 
-type IconName =
+export type IconName =
     | 'companies'
     | 'account'
     | 'dashboard'
