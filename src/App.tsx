@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { Header, SideNavigation } from './components';
 import GlobalStyle from './GlobalStyle';
@@ -8,23 +9,14 @@ const AppBase = styled.div`
     grid-template-rows: 6.8rem 1fr;
 `;
 
-const AppSideNavigation = styled(SideNavigation)`
-    grid-column: 1/2;
-    grid-row: 1/3;
-`;
-
-const AppHeader = styled(Header)`
-    grid-column: 2/3;
-    grid-row: 1/2;
-`;
-
 function App() {
     return (
         <>
             <GlobalStyle />
             <AppBase>
-                <AppHeader />
-                <AppSideNavigation />
+                <Header />
+                <SideNavigation />
+                <Outlet />
             </AppBase>
         </>
     );
