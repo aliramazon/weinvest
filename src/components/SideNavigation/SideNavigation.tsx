@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import Icon from '../Icon';
 
 const SideNavigationBase = styled.div`
     background-color: var(--whiteColor);

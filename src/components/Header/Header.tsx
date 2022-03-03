@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Logo from '../Logo/Logo';
 
 const HeaderBase = styled.header`

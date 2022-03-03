@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import sprite from '../../images/sprite.svg';
 
 type IconName =
@@ -11,14 +12,21 @@ type IconName =
     | 'memebers';
 
 interface IconProps {
-    iconName: IconName;
-    className: string;
+    name: IconName;
+    height?: string;
+    width?: string;
+    color: string;
 }
 
-const Icon: React.FC<IconProps> = ({ iconName, className }) => {
+const Icon: React.FC<IconProps> = ({
+    name,
+    height = '2rem',
+    width = '2rem',
+    color
+}) => {
     return (
-        <svg className={`icon ${className}`}>
-            <use xlinkHref={`${sprite}#${iconName}`} />
+        <svg height={height} width={width} fill={color}>
+            <use xlinkHref={`${sprite}#${name}`} />
         </svg>
     );
 };
