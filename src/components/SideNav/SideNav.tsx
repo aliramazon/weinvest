@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { SideNavGroupLinksProps, SideNavLinks } from '..';
 
-const SideNav = styled.div`
+const SideNavBase = styled.div`
     background-color: var(--whiteColor);
     width: 25rem;
     height: 100vh;
@@ -10,5 +11,13 @@ const SideNav = styled.div`
     grid-column: 1/2;
     grid-row: 2/3;
 `;
+
+const SideNav: React.FC<SideNavGroupLinksProps> = ({ links }) => {
+    return (
+        <SideNavBase>
+            <SideNavLinks links={links} />
+        </SideNavBase>
+    );
+};
 
 export default SideNav;
