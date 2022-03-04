@@ -9,7 +9,7 @@ export type IconName =
     | 'due-documents'
     | 'documents'
     | 'funds'
-    | 'memebers';
+    | 'members';
 
 interface IconProps {
     name: IconName;
