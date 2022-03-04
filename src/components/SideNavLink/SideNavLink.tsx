@@ -1,21 +1,24 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import Icon, { IconName } from '../Icon/Icon';
+import Icon from '../Icon/Icon';
+import { SideNavLinkProps } from './SideNavLinkProps';
 
 const NavLinkBase = styled(NavLink)`
     display: flex;
     align-items: center;
     gap: 0 var(--spacing-4);
     padding: 0 var(--spacing-5);
-    height: 4.4rem;
+    margin-bottom: 0.2rem;
+    height: 4.2rem;
     width: 100%;
 
     color: var(--generalColor-80);
     font-size: var(--font-size-2);
     font-weight: var(--font-weight-400);
+    transition: all 0.3s;
 
-    &.active {
-        background-color: var(--primaryColor-100);
+    &.active,
+    &:hover {
         border-radius: 0.4rem;
         color: var(--whiteColor);
 
@@ -23,13 +26,16 @@ const NavLinkBase = styled(NavLink)`
             fill: var(--whiteColor);
         }
     }
+
+    &.active {
+        background-color: var(--primaryColor-100);
+    }
+
+    &:hover:not(.active) {
+        background-color: var(--primaryColor-80);
+    }
 `;
 
-interface SideNavLinkProps {
-    to: string;
-    icon: IconName;
-    text: string;
-}
 const SideNavLink: React.FC<SideNavLinkProps> = ({ to, icon, text }) => {
     return (
         <NavLinkBase
