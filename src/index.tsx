@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App';
+import App from './app/App';
 import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
@@ -11,8 +11,16 @@ ReactDOM.render(
         <Router>
             <Routes>
                 <Route path="/" element={<App />}>
-                    <Route path="example1" element={<h1>I am Example1</h1>} />
-                    <Route path="example2" element={<h1>I am Example2</h1>} />
+                    <Route index element={<h1>I am Example1</h1>} />
+                    <Route path="funds" element={<h1>I am Example1</h1>} />
+                    <Route path="companies" element={<h1>I am Example1</h1>} />
+                    <Route
+                        path="current-documents"
+                        element={<h1>I am Example1</h1>}
+                    />
+                    <Route path="documents" element={<h1>I am Example1</h1>} />
+                    <Route path="members" element={<h1>I am Example1</h1>} />
+                    <Route path="profile" element={<h1>I am Example1</h1>} />
                 </Route>
             </Routes>
         </Router>

@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { Header, SideNav } from './components';
-import GlobalStyle from './GlobalStyle';
+import { Header, SideNav } from '../components';
+import GlobalStyle from '../GlobalStyle';
+import { SIDE_NAV_LINKS_GROUPS } from './routes';
 
 const AppBase = styled.div`
     display: grid;
@@ -15,7 +16,7 @@ function App() {
             <GlobalStyle />
             <AppBase>
                 <Header />
-                <SideNav />
+                <SideNav links={SIDE_NAV_LINKS_GROUPS} />
                 <Outlet />
             </AppBase>
         </>
