@@ -42,7 +42,7 @@ const SideNavLink: React.FC<SideNavLinkProps> = ({ to, icon, text }) => {
             to={to}
             className={({ isActive }) => (isActive ? 'active' : undefined)}
         >
-            <Icon name={icon} color={'var(--generalColor-80)'} />
+            <Icon name={icon} color="var(--generalColor-80)" />
             {text}
         </NavLinkBase>
     );

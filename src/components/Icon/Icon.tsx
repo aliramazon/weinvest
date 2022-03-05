@@ -20,8 +20,8 @@ interface IconProps {
 
 const Icon: React.FC<IconProps> = ({
     name,
-    height = '2rem',
-    width = '2rem',
+    height = '2.2rem',
+    width = '2.2rem',
     color
 }) => {
     return (
