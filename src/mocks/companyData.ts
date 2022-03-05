@@ -1,6 +1,6 @@
-import { EmailWebsites, FundingRound } from './constants';
+import { EmailWebsites, FundingRound, Company } from './constants';
 
-const pickRandomIdx = (maxIdx: number): number => {
+export const pickRandomIdx = (maxIdx: number): number => {
     return Math.floor(Math.random() * maxIdx);
 };
 
@@ -66,32 +66,6 @@ const calculateFundingRounds = (FUNDING_ROUNDS: FundingRound[]) => {
     };
 };
 
-interface CalculatedFundingRound {
-    [roundName: string]: number;
-    totalRaised: number;
-    postMoneyValuation: number;
-    givenEquity: number;
-}
-interface CompanyInfo {
-    name: string;
-    hq: string;
-    email: string;
-    website: string;
-}
-interface CompanyBusiness {
-    industry: string;
-    businessModel: string;
-    fundingRounds: CalculatedFundingRound[];
-    totalRaised: number;
-    valuation: number;
-    potentialExitValuation: number;
-}
-
-export interface Company {
-    id: number;
-    info: CompanyInfo;
-    business: CompanyBusiness;
-}
 const generateCompanyData = (
     COMPANIES: string[],
     EMAIL_WEBSITES: EmailWebsites[],

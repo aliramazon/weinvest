@@ -1,3 +1,34 @@
+export const FUNDS = [
+    'Invest',
+    'Invested',
+    'Muchfund',
+    'Sfund',
+    'Investart',
+    'Dfund',
+    'Upfund',
+    'FundDrive',
+    'AngelD',
+    'AssetGuin',
+    'VentureFortune',
+    'Venturia',
+    'Angelcam',
+    'Angel Shares',
+    'Venture Hall',
+    'Venture Turbo',
+    'Studio Venture',
+    'Hane and Sons Ventures',
+    'Windler Group',
+    'Olson Ventures',
+    'VentureHerd',
+    'Venture Spin',
+    'Venturee',
+    'Keller Venture',
+    'Venture Vessel',
+    'Venture Fortune',
+    'KB Brothers',
+    'Prove Ventures'
+];
+
 export const COMPANIES = [
     'readycampus',
     'techstadium',
@@ -369,3 +400,52 @@ export const FUNDING_ROUNDS: FundingRound[] = [
     { 'Series C': [55000000, 99000000] },
     { 'Series D': [99000000, 190000000] }
 ];
+
+interface CalculatedFundingRound {
+    [roundName: string]: number;
+    totalRaised: number;
+    postMoneyValuation: number;
+    givenEquity: number;
+}
+interface CompanyInfo {
+    name: string;
+    hq: string;
+    email: string;
+    website: string;
+}
+interface CompanyBusiness {
+    industry: string;
+    businessModel: string;
+    fundingRounds: CalculatedFundingRound[];
+    totalRaised: number;
+    valuation: number;
+    potentialExitValuation: number;
+}
+
+export interface Company {
+    id: number;
+    info: CompanyInfo;
+    business: CompanyBusiness;
+}
+
+export const DIC: { [roundNumber: number]: string } = {
+    0: 'Seed',
+    1: 'Series A',
+    2: 'Series B',
+    3: 'Series C',
+    4: 'Series D'
+};
+
+interface InvestedCompany {
+    id: number;
+    investedRound: string;
+    investedAmount: number;
+    ownershipPercentage: number;
+    impliedValue: number;
+    multiple: number;
+}
+export interface Fund {
+    id: number;
+    name: string;
+    investedIn: InvestedCompany[];
+}
