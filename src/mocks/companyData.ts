@@ -1,4 +1,5 @@
-import { EmailWebsites, FundingRound, Company } from './constants';
+import { nanoid } from 'nanoid';
+import { EmailWebsites, FundingRound, Company, Companies } from './constants';
 
 export const pickRandomIdx = (maxIdx: number): number => {
     return Math.floor(Math.random() * maxIdx);
@@ -74,13 +75,14 @@ const generateCompanyData = (
     BUSINESS_MODELS: string[],
     FUNDING_ROUNDS: FundingRound[]
 ) => {
-    const data: Company[] = [];
+    const data: Companies = {};
 
-    COMPANIES.forEach((company: string, idx) => {
+    COMPANIES.forEach((company: string) => {
+        const companyId = nanoid() as string;
         const companyData = {
-            id: idx,
             info: {},
-            business: {}
+            business: {},
+            id: companyId
         } as Company;
         const companyEmailAndWebsite = getCompanyEmailAndWebsite(
             EMAIL_WEBSITES,
@@ -102,7 +104,7 @@ const generateCompanyData = (
 
         companyData.info = info;
         companyData.business = business;
-        data.push(companyData);
+        data[companyId] = companyData;
     });
     return data;
 };
