@@ -423,9 +423,13 @@ interface CompanyBusiness {
 }
 
 export interface Company {
-    id: number;
+    id: string;
     info: CompanyInfo;
     business: CompanyBusiness;
+}
+
+export interface Companies {
+    [id: string]: Company;
 }
 
 export const DIC: { [roundNumber: number]: string } = {
@@ -436,8 +440,9 @@ export const DIC: { [roundNumber: number]: string } = {
     4: 'Series D'
 };
 
-interface InvestedCompany {
-    id: number;
+export interface FundedCompany {
+    name: string;
+    id: string;
     investedRound: string;
     investedAmount: number;
     ownershipPercentage: number;
@@ -445,7 +450,11 @@ interface InvestedCompany {
     multiple: number;
 }
 export interface Fund {
-    id: number;
+    id: string;
     name: string;
-    investedIn: InvestedCompany[];
+    investedIn: FundedCompany[];
+}
+
+export interface Funds {
+    [id: string]: Fund;
 }
