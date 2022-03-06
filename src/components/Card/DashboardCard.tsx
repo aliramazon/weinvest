@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Card from './Card';
+import { Card } from './Card';
 import { DashboarCardProps } from './CardProps';
-import Icon from '../Icon';
+import { Icon } from '../Icon';
 
 const DashboardCardBase = styled(Card)`
     display: grid;
@@ -9,6 +9,8 @@ const DashboardCardBase = styled(Card)`
     align-items: center;
     height: 13.6rem;
     width: 100%;
+
+    flex: 1;
 `;
 
 const DashboardCardFact = styled.h2`
@@ -52,3 +54,5 @@ const DashboardCard: React.FC<DashboarCardProps> = ({
         </DashboardCardBase>
     );
 };
+
+export default DashboardCard;

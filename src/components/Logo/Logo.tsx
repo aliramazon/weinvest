@@ -3,7 +3,7 @@ import React from 'react';
 interface LogoProps {
     height?: string;
 }
-const Logo: React.FC<LogoProps> = ({ height = '2.625rem' }) => {
+export const Logo: React.FC<LogoProps> = ({ height = '2.625rem' }) => {
     return (
         <div>
             <svg
@@ -26,5 +26,3 @@ const Logo: React.FC<LogoProps> = ({ height = '2.625rem' }) => {
         </div>
     );
 };
-
-export default Logo;

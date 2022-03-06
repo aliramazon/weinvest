@@ -1,10 +1,9 @@
-import { SideNavLinkProps } from '..';
+import { SideNavLinkProps } from '../SideNavLink';
 
-export interface SideNavLinksProps {
+export interface SideNavLinksGroupProps {
     groupName?: string;
     links: SideNavLinkProps[];
 }
-
-export interface SideNavGroupLinksProps {
-    links: SideNavLinksProps[];
+export interface SideNavLinksProps {
+    links: SideNavLinksGroupProps[];
 }

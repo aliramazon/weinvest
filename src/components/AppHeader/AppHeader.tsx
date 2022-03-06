@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Logo from '../Logo/Logo';
+import { Logo } from '../Logo/Logo';
 
-const HeaderBase = styled.header`
+const AppHeaderBase = styled.header`
     background-color: var(--whiteColor);
     width: 100%;
     height: 6.8rem;
@@ -15,12 +15,10 @@ const HeaderBase = styled.header`
     grid-row: 1/2;
 `;
 
-const Header = () => {
+export const AppHeader = () => {
     return (
-        <HeaderBase>
+        <AppHeaderBase>
             <Logo />
-        </HeaderBase>
+        </AppHeaderBase>
     );
 };
-
-export default Header;

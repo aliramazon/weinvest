@@ -1,24 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import sprite from '../../images/sprite.svg';
+import { IconProps } from './IconProps';
 
-export type IconName =
-    | 'companies'
-    | 'account'
-    | 'dashboard'
-    | 'due-documents'
-    | 'documents'
-    | 'funds'
-    | 'members';
-
-interface IconProps {
-    name: IconName;
-    height?: string;
-    width?: string;
-    color: string;
-}
-
-const Icon: React.FC<IconProps> = ({
+export const Icon: React.FC<IconProps> = ({
     name,
     height = '2.2rem',
     width = '2.2rem',
@@ -30,5 +14,3 @@ const Icon: React.FC<IconProps> = ({
         </svg>
     );
 };
-
-export default Icon;

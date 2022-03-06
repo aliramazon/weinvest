@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import Icon from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 import { SideNavLinkProps } from './SideNavLinkProps';
 
 const NavLinkBase = styled(NavLink)`
@@ -36,7 +36,7 @@ const NavLinkBase = styled(NavLink)`
     }
 `;
 
-const SideNavLink: React.FC<SideNavLinkProps> = ({ to, icon, text }) => {
+export const SideNavLink: React.FC<SideNavLinkProps> = ({ to, icon, text }) => {
     return (
         <NavLinkBase
             to={to}
@@ -47,5 +47,3 @@ const SideNavLink: React.FC<SideNavLinkProps> = ({ to, icon, text }) => {
         </NavLinkBase>
     );
 };
-
-export default SideNavLink;

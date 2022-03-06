@@ -1,2 +1,2 @@
-export { default } from './SideNavLink';
+export * from './SideNavLink';
 export * from './SideNavLinkProps';

@@ -1,5 +1,5 @@
-import { SideNavLinksProps } from '../../components';
-export const SIDE_NAV_LINKS_GROUPS: SideNavLinksProps[] = [
+import { SideNavLinksGroupProps } from '../../components';
+export const SIDE_NAV_LINKS_GROUPS: SideNavLinksGroupProps[] = [
     {
         links: [
             {
