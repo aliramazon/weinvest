@@ -63,8 +63,8 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
             fund.totalInvested += investedAmount;
         }
         data[fundId] = fund;
-        startIdx = endIdx;
-        endIdx = pickRandomMax(startIdx + 3, 5);
+        startIdx = startIdx + 2;
+        endIdx = endIdx + 2;
     }
 
     return data;
