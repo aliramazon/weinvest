@@ -21,7 +21,9 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
             investedIn: [],
             totalInvested: 0,
             highestInvestedAmount: 0,
-            highestInvestedCompany: ''
+            highestInvestedCompany: '',
+            highestMultiple: 0,
+            highestMultipleCompany: ''
         };
 
         for (let i = startIdx; i < endIdx && i < companies.length; i++) {
@@ -46,6 +48,7 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
                 (ownershipPercentage *
                     company.business.potentialExitValuation) /
                 100;
+            const multiple = impliedValue / investedAmount;
             const companyObj = {
                 name: company.info.name,
                 id: company.id,
@@ -53,15 +56,20 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
                 investedAmount: investedAmount,
                 ownershipPercentage: ownershipPercentage,
                 impliedValue: impliedValue,
-                multiple: impliedValue / investedAmount
+                multiple: multiple
             };
             if (fund.highestInvestedAmount < investedAmount) {
                 fund.highestInvestedAmount = investedAmount;
                 fund.highestInvestedCompany = company.info.name;
             }
+            if (fund.highestMultiple < multiple) {
+                fund.highestMultiple = multiple;
+                fund.highestMultipleCompany = company.info.name;
+            }
             fund.investedIn.push(companyObj);
             fund.totalInvested += investedAmount;
         }
+
         data[fundId] = fund;
         startIdx = startIdx + 2;
         endIdx = endIdx + 2;

@@ -485,6 +485,8 @@ export interface Fund {
     totalInvested: number;
     highestInvestedAmount: number;
     highestInvestedCompany: string;
+    highestMultiple: number;
+    highestMultipleCompany: string;
 }
 
 export interface Funds {
