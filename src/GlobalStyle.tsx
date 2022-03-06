@@ -72,6 +72,8 @@ const GlobalStyle = createGlobalStyle`${css`
         --font-weight-400: 400;
         --font-weight-500: 500;
         --font-weight-600: 600;
+
+        --box-shadow: 0 0.1rem 0.4rem rgba(19, 21, 35, 0.08);
     }
 
     *,

@@ -27,6 +27,7 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
         };
 
         for (let i = startIdx; i < endIdx && i < companies.length; i++) {
+            console.log(i);
             const company = companies[i];
             const companyFundingRounds = company.business.fundingRounds;
             let investedRoundIdx = pickRandomIdx(companyFundingRounds.length);
@@ -71,8 +72,8 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
         }
 
         data[fundId] = fund;
-        startIdx = startIdx + 2;
-        endIdx = endIdx + 2;
+        startIdx = startIdx + 6;
+        endIdx = endIdx + 6;
     }
 
     return data;

@@ -13,8 +13,10 @@ const AppBase = styled.div`
 
 function App() {
     const api = new API();
-    console.log(api.fetchFundsData());
-    console.log(api.fetchCompaniesData());
+    const data = api.fetchFundsData();
+    console.log(data);
+    const full = Object.values(data).filter((d) => d.investedIn.length > 0);
+    console.log(full.length);
     return (
         <>
             <GlobalStyle />
