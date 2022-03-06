@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { AppHeader, SideNav, AppLayout } from '../components';
 import GlobalStyle from '../GlobalStyle';
-import { SIDE_NAV_LINKS_GROUPS } from './routes';
+import { SIDE_NAV_LINKS_GROUPS } from './router';
 import API from '../api/api';
 
 function App() {
