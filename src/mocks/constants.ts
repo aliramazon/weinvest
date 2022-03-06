@@ -26,7 +26,25 @@ export const FUNDS = [
     'Venture Vessel',
     'Venture Fortune',
     'KB Brothers',
-    'Prove Ventures'
+    'Provo Ventures',
+    'Initialized Capital',
+    'Insight Partnerz',
+    'Felicis Ventures',
+    'GE Ventures',
+    'Capital G',
+    'Highland Capital',
+    'Oak Investment Partners',
+    'Rothenburg Sons',
+    'Radius Ventures',
+    'Spark Invest',
+    'Union Square',
+    'Venrock',
+    'Greycroft',
+    'IDG',
+    'Foundation Capital',
+    'Inter Invest',
+    'Elevation Partners',
+    'Crunch Fund'
 ];
 
 export const COMPANIES = [
@@ -257,8 +275,8 @@ export const COMPANIES = [
     'SECUND',
     'usabilitech',
     'techieiq',
-    'Hometu',
-    'WALLACE',
+    'Extra O Doordash',
+    'Walmart AI',
     'metafoli',
     'Jigge',
     'LISTE',
@@ -295,8 +313,8 @@ export const COMPANIES = [
     'faoulin',
     'Class',
     'Prezi',
-    'Kelv',
-    'Hovillo',
+    'Coinbasify',
+    'Instacartify',
     'PURE',
     'telonot',
     'Blan',
@@ -307,11 +325,22 @@ export const COMPANIES = [
     'SLUGGE',
     'NoRos',
     'ECOVE',
+    'Ubebrify',
+    'Lyftify',
     'geniusintel',
     'brighttomorrows',
     'stellarlab',
     'POSNAVE',
-    'NEVU'
+    'NEVU',
+    'True Pay',
+    'Custom Elements',
+    'Potato DB',
+    'Super IO',
+    'Clean Window',
+    'Remote Hire',
+    'Airbnbify',
+    'Dropboxify',
+    'Boxify'
 ];
 
 export const HQ = [
@@ -453,6 +482,9 @@ export interface Fund {
     id: string;
     name: string;
     investedIn: FundedCompany[];
+    totalInvested: number;
+    highestInvestedAmount: number;
+    highestInvestedCompany: string;
 }
 
 export interface Funds {

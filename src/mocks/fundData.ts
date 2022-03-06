@@ -2,6 +2,9 @@ import { nanoid } from 'nanoid';
 import { Companies, Fund, Funds, DIC } from './constants';
 import { pickRandomIdx } from './companyData';
 
+const pickRandomMax = (num: number, maxDif: number) => {
+    return Math.floor(num + 1 + maxDif * Math.random());
+};
 const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
     const companies = Object.values(COMPANIES);
     const data: Funds = {};
@@ -15,10 +18,13 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
         const fund: Fund = {
             name: fundName,
             id: fundId,
-            investedIn: []
+            investedIn: [],
+            totalInvested: 0,
+            highestInvestedAmount: 0,
+            highestInvestedCompany: ''
         };
 
-        for (let i = startIdx; i < endIdx; i++) {
+        for (let i = startIdx; i < endIdx && i < companies.length; i++) {
             const company = companies[i];
             const companyFundingRounds = company.business.fundingRounds;
             let investedRoundIdx = pickRandomIdx(companyFundingRounds.length);
@@ -49,11 +55,16 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
                 impliedValue: impliedValue,
                 multiple: impliedValue / investedAmount
             };
+            if (fund.highestInvestedAmount < investedAmount) {
+                fund.highestInvestedAmount = investedAmount;
+                fund.highestInvestedCompany = company.info.name;
+            }
             fund.investedIn.push(companyObj);
+            fund.totalInvested += investedAmount;
         }
         data[fundId] = fund;
-        startIdx += 10;
-        endIdx += 10;
+        startIdx = endIdx;
+        endIdx = pickRandomMax(startIdx + 3, 5);
     }
 
     return data;

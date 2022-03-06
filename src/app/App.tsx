@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Header, SideNav } from '../components';
 import GlobalStyle from '../GlobalStyle';
 import { SIDE_NAV_LINKS_GROUPS } from './routes';
+import API from '../api/api';
 
 const AppBase = styled.div`
     display: grid;
@@ -11,6 +12,9 @@ const AppBase = styled.div`
 `;
 
 function App() {
+    const api = new API();
+    console.log(api.fetchFundsData());
+    console.log(api.fetchCompaniesData());
     return (
         <>
             <GlobalStyle />
