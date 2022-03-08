@@ -5,20 +5,16 @@ import {
     DashboardCards,
     DashboardCard
 } from '../../../components';
-import API from '../../../api';
 import { useStore } from '../../../context/AppContext';
-import { Actions } from '../../../store';
+import { Actions, ActionType } from '../../../store';
 
 export const Funds = () => {
     const { state, dispatch } = useStore();
     useEffect(() => {
         dispatch({
-            type: Actions.FETCH_FUNDS_DATA,
-            payload: undefined
+            type: Actions.FETCH_FUNDS_DATA
         });
     }, []);
-
-    console.log(state && state);
 
     return (
         <MainLayout>

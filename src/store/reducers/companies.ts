@@ -5,12 +5,12 @@ import API from '../../api';
 const api = new API();
 
 export const companies = (
-    state: CompaniesState,
-    action: ActionType<Companies>
-) => {
+    state = {} as CompaniesState,
+    action: ActionType
+): CompaniesState => {
     switch (action.type) {
         case Actions.FETCH_FUNDS_DATA:
-            state.funds = api.fetchCompaniesData();
+            state.data = api.fetchCompaniesData();
             return state;
         default:
             return state;

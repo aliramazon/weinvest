@@ -12,3 +12,5 @@ export interface GlobalState {
     funds: FundsState;
     companies: CompaniesState;
 }
+
+export const initialState = { funds: {}, companies: {} } as GlobalState;

@@ -4,7 +4,10 @@ import { CompaniesActions } from './companies';
 export const Actions = { ...FundsActions, ...CompaniesActions };
 export type ActionsType = FundsActions | CompaniesActions;
 
-export interface ActionType<T> {
+export type FetchFundsPayload = undefined;
+export type Payload = FetchFundsPayload;
+
+export interface ActionType {
     type: ActionsType;
-    payload: T;
+    payload?: Payload;
 }
