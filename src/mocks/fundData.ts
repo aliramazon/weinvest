@@ -2,9 +2,6 @@ import { nanoid } from 'nanoid';
 import { Companies, Fund, Funds, DIC } from './constants';
 import { pickRandomIdx } from './companyData';
 
-const pickRandomMax = (num: number, maxDif: number) => {
-    return Math.floor(num + 1 + maxDif * Math.random());
-};
 const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
     const companies = Object.values(COMPANIES);
     const data: Funds = {};
@@ -20,14 +17,15 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
             id: fundId,
             investedIn: [],
             totalInvested: 0,
-            highestInvestedAmount: 0,
-            highestInvestedCompany: '',
-            highestMultiple: 0,
-            highestMultipleCompany: ''
+            highest: {
+                investedAmount: 0,
+                investedCompany: '',
+                multiple: 0,
+                multipleCompany: ''
+            }
         };
 
         for (let i = startIdx; i < endIdx && i < companies.length; i++) {
-            console.log(i);
             const company = companies[i];
             const companyFundingRounds = company.business.fundingRounds;
             let investedRoundIdx = pickRandomIdx(companyFundingRounds.length);
@@ -59,13 +57,13 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
                 impliedValue: impliedValue,
                 multiple: multiple
             };
-            if (fund.highestInvestedAmount < investedAmount) {
-                fund.highestInvestedAmount = investedAmount;
-                fund.highestInvestedCompany = company.info.name;
+            if (fund.highest.investedAmount < investedAmount) {
+                fund.highest.investedAmount = investedAmount;
+                fund.highest.investedCompany = company.info.name;
             }
-            if (fund.highestMultiple < multiple) {
-                fund.highestMultiple = multiple;
-                fund.highestMultipleCompany = company.info.name;
+            if (fund.highest.multiple < multiple) {
+                fund.highest.multiple = multiple;
+                fund.highest.multipleCompany = company.info.name;
             }
             fund.investedIn.push(companyObj);
             fund.totalInvested += investedAmount;

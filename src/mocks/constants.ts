@@ -483,10 +483,12 @@ export interface Fund {
     name: string;
     investedIn: FundedCompany[];
     totalInvested: number;
-    highestInvestedAmount: number;
-    highestInvestedCompany: string;
-    highestMultiple: number;
-    highestMultipleCompany: string;
+    highest: {
+        investedAmount: number;
+        investedCompany: string;
+        multiple: number;
+        multipleCompany: string;
+    };
 }
 
 export interface Funds {

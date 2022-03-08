@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from '../App';
+import { Funds } from '../pages';
 
 export const AppRouter = () => {
     return (
@@ -7,7 +8,7 @@ export const AppRouter = () => {
             <Routes>
                 <Route path="/" element={<App />}>
                     <Route index element={<h1>I am Example1</h1>} />
-                    <Route path="funds" element={<h1>I am Example1</h1>} />
+                    <Route path="funds" element={<Funds />} />
                     <Route path="companies" element={<h1>I am Example1</h1>} />
                     <Route
                         path="current-documents"

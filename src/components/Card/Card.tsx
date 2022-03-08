@@ -6,7 +6,3 @@ export const Card = styled.div`
     border-radius: 0.6rem;
     background-color: var(--whiteColor);
 `;
-export const DashboardCards = styled.div`
-    display: flex;
-    gap: var(--spacing-7);
-`;

@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppRouter } from './app/router';
 import * as serviceWorker from './serviceWorker';
+import { AppProvider } from './context/AppContext';
 
 const root = document.getElementById('root');
 
 ReactDOM.render(
     <React.StrictMode>
-        <AppRouter />
+        <AppProvider>
+            <AppRouter />
+        </AppProvider>
     </React.StrictMode>,
     root
 );

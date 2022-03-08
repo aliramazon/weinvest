@@ -1,7 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`${css`
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700&display=swap');
     :root {
         // COLORS
         --generalColor-100: #131523;
@@ -72,6 +72,7 @@ const GlobalStyle = createGlobalStyle`${css`
         --font-weight-400: 400;
         --font-weight-500: 500;
         --font-weight-600: 600;
+        --font-weight-700: 700;
 
         --box-shadow: 0 0.1rem 0.4rem rgba(19, 21, 35, 0.08);
     }

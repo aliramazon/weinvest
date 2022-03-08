@@ -15,7 +15,6 @@ import {
 const isDataAvailable = <T>(obj: T): boolean => {
     return Object.keys(obj).length > 0;
 };
-
 class API {
     companiesData: Companies;
     fundsData: Funds;
@@ -25,7 +24,8 @@ class API {
     }
 
     fetchCompaniesData() {
-        if (isDataAvailable(this.companiesData)) return this.companiesData;
+        if (isDataAvailable<Companies>(this.companiesData))
+            return this.companiesData;
         const companiesData = generateCompanyData(
             COMPANIES,
             EMAIL_WEBSITES,
@@ -39,8 +39,8 @@ class API {
     }
 
     fetchFundsData() {
-        if (isDataAvailable(this.fundsData)) return this.fundsData;
-        if (!isDataAvailable(this.companiesData)) {
+        if (isDataAvailable<Funds>(this.fundsData)) return this.fundsData;
+        if (!isDataAvailable<Companies>(this.companiesData)) {
             this.fetchCompaniesData();
         }
         this.fundsData = generateFundsData(FUNDS, this.companiesData);

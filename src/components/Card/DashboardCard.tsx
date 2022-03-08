@@ -5,11 +5,9 @@ import { Icon } from '../Icon';
 
 const DashboardCardBase = styled(Card)`
     display: grid;
-    grid-template-columns: 1fr 52rem;
+    grid-template-columns: 1fr 5.2rem;
     align-items: center;
     height: 13.6rem;
-    width: 100%;
-
     flex: 1;
 `;
 
@@ -30,12 +28,18 @@ const DashboardCardIconHolder = styled.div`
     align-items: center;
     justify-content: center;
 
-    height: 4rem;
-    width: 4rem;
+    height: 5.6rem;
+    width: 5.6rem;
     background-color: var(--primaryColor-30);
+    border-radius: 50%;
 `;
 
-const DashboardCard: React.FC<DashboarCardProps> = ({
+export const DashboardCards = styled.div`
+    display: flex;
+    gap: var(--spacing-7);
+`;
+
+export const DashboardCard: React.FC<DashboarCardProps> = ({
     fact,
     description,
     icon
@@ -54,5 +58,3 @@ const DashboardCard: React.FC<DashboarCardProps> = ({
         </DashboardCardBase>
     );
 };
-
-export default DashboardCard;

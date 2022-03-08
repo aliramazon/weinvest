@@ -1,4 +1,5 @@
 export * from './AppHeader';
+export * from './AppContentHeader';
 export * from './Logo';
 export * from './SideNav';
 export * from './Icon';
