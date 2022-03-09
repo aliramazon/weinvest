@@ -96,11 +96,12 @@ const GlobalStyle = createGlobalStyle`${css`
 
     html,
     body {
-        // -webkit-text-rendering: optimizeLegibility;
-        // text-rendering: optimizeLegibility;
         text-size-adjust: none;
-        -webkit-text-size-adjust: none;
         font-family: 'Inter', sans-serif;
+
+        // FOR IE
+        scrollbar-face-color: #c1cbd0;
+        scrollbar-track-color: #ffffff;
     }
 
     ul {
@@ -108,6 +109,17 @@ const GlobalStyle = createGlobalStyle`${css`
     }
     a {
         text-decoration: none;
+    }
+
+    &::-webkit-scrollbar {
+        background-color: var(--colorWhite);
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--colorWhite);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: var(--generalColor-40);
     }
 `}`;
 
