@@ -1,6 +1,5 @@
 import { CompaniesState } from '../state/state';
 import { ActionType, Actions } from '../actions';
-import { Companies } from '../../mocks';
 import API from '../../api';
 const api = new API();
 

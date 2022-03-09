@@ -1,5 +1,4 @@
 import { FundsState } from '../state/state';
-import { Funds } from '../../mocks';
 import { ActionType, Actions } from '../actions';
 import API from '../../api/';
 const api = new API();

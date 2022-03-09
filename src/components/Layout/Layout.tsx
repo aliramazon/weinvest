@@ -3,16 +3,16 @@ export const AppLayout = styled.div`
     display: grid;
     grid-template-columns: 25rem 1fr;
     grid-template-rows: 6.8rem 1fr;
+    height: 100vh;
 `;
 
 export const MainLayout = styled.div`
     padding: var(--spacing-8);
-    display: grid;
-    grid-template-rows: max-content;
-    grid-auto-rows: max-content;
-    grid-template-columns: 1fr;
-    row-gap: var(--spacing-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-7);
 
     grid-column: 2/3;
     grid-row: 2/3;
+    height: calc(100vh - 6.8rem);
 `;

@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom';
 import { AppHeader, SideNav, AppLayout } from '../components';
-import { AppProvider } from '../context/AppContext';
 import GlobalStyle from '../GlobalStyle';
 import { SIDE_NAV_LINKS_GROUPS } from './router';
 

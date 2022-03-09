@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 export const TableBody = styled.div`
-    height: calc(100% - 80px);
+    // height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
     &::-webkit-scrollbar {
-        background-color: #eff1f4;
-        width: 10px;
+        background-color: var(--colorWhite);
+        width: 5px;
     }
     &::-webkit-scrollbar-track {
-        background: #ffffff;
+        background: var(--colorWhite);
     }
     &::-webkit-scrollbar-thumb {
-        background: #c1cbd0;
+        background: var(--generalColor-40);
     }
     // for IE
     body {

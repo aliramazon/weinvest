@@ -7,3 +7,4 @@ export * from './SideNavLink';
 export * from './SideNavLinks';
 export * from './Card';
 export * from './Layout';
+export * from './Table';
