@@ -9,4 +9,10 @@ export interface TableCellProps {
 
 export interface TableRowProps {
     children: React.ReactNode;
+    onClick?: () => void;
+}
+
+export interface RowLinkProps {
+    to: string;
+    children: React.ReactNode;
 }

@@ -1,23 +1,28 @@
 import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import { RowLink } from '../../../components';
+
 import {
-    MainLayout,
+    AppContentLayout,
     AppContentHeader,
-    Card,
+    TableCard,
     Table,
     TableHead,
     TableBody,
     TableBodyCell,
     TableHeadCell,
-    TableRow
+    TableRow,
+    Seperator
 } from '../../../components';
 import { useStore } from '../../../context/AppContext';
 import { Actions } from '../../../store';
 import { Fund } from '../../../mocks';
 
-const TableCard = styled(Card)`
-    // height: calc(100% - 80px);
-    min-height: 0;
+const Container = styled(TableCard)`
+    display: grid;
+    grid-template-columns: 30rem 0.5rem 1fr;
+    gap: var(--spacing-7);
 `;
 
 export const Funds = () => {
@@ -34,47 +39,33 @@ export const Funds = () => {
     }, [dispatch]);
 
     return (
-        <MainLayout>
-            <AppContentHeader title="Funds"></AppContentHeader>
-            <TableCard>
-                <Table>
-                    <TableHead>
-                        <TableHeadCell>Fund Name</TableHeadCell>
-                        <TableHeadCell>Total Investment</TableHeadCell>
-                        <TableHeadCell>Highest Investment</TableHeadCell>
-                        <TableHeadCell>Highest Invested In</TableHeadCell>
-                        <TableHeadCell>Highest Multiple</TableHeadCell>
-                        <TableHeadCell>Multiple Company</TableHeadCell>
-                    </TableHead>
-                    <TableBody>
-                        {data &&
-                            Object.values(data).map((fund: Fund) => {
-                                return (
-                                    <TableRow key={fund.id}>
-                                        <TableBodyCell>
-                                            {fund.name}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {fund.totalInvested}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {fund.highest?.investedAmount}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {fund.highest?.investedCompany}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {fund.highest?.multiple}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {fund.highest?.multipleCompany}
-                                        </TableBodyCell>
-                                    </TableRow>
-                                );
-                            })}
-                    </TableBody>
-                </Table>
-            </TableCard>
-        </MainLayout>
+        <>
+            <AppContentLayout>
+                <AppContentHeader title="Funds"></AppContentHeader>
+                <Container>
+                    <Table>
+                        <TableHead>
+                            <TableHeadCell>Fund Name</TableHeadCell>
+                        </TableHead>
+                        <TableBody>
+                            {data &&
+                                Object.values(data).map((fund: Fund) => {
+                                    return (
+                                        <RowLink to={fund.id}>
+                                            <TableRow key={fund.id}>
+                                                <TableBodyCell>
+                                                    {fund.name}
+                                                </TableBodyCell>
+                                            </TableRow>
+                                        </RowLink>
+                                    );
+                                })}
+                        </TableBody>
+                    </Table>
+                    <Seperator />
+                    <Outlet />
+                </Container>
+            </AppContentLayout>
+        </>
     );
 };

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { SideNavLinksProps, SideNavLinks } from '../SideNavLinks';
 
 const SideNavBase = styled.div`
-    background-color: var(--whiteColor);
+    // background-color: var(--whiteColor);
     width: 25rem;
     height: 100%;
     padding: var(--spacing-5);

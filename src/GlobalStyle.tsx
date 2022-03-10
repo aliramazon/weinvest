@@ -100,7 +100,7 @@ const GlobalStyle = createGlobalStyle`${css`
         font-family: 'Inter', sans-serif;
 
         // FOR IE
-        scrollbar-face-color: #c1cbd0;
+        scrollbar-face-color: var(--generalColor-40);
         scrollbar-track-color: #ffffff;
     }
 
@@ -119,7 +119,7 @@ const GlobalStyle = createGlobalStyle`${css`
         background: var(--colorWhite);
     }
     &::-webkit-scrollbar-thumb {
-        background: var(--generalColor-40);
+        background: var(--generalColor-50);
     }
 `}`;
 

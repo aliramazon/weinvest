@@ -6,7 +6,7 @@ export const AppLayout = styled.div`
     height: 100vh;
 `;
 
-export const MainLayout = styled.div`
+export const AppContentLayout = styled.div`
     padding: var(--spacing-8);
     display: flex;
     flex-direction: column;

@@ -14,6 +14,11 @@ const TableBodyRowBase = styled(TableRowBase)`
     border-bottom: 0.1rem solid var(--generalColor-40);
 `;
 
-export const TableRow: React.FC<TableRowProps> = ({ children }) => {
-    return <TableBodyRowBase>{children}</TableBodyRowBase>;
+export const TableRow: React.FC<TableRowProps> = ({ children, onClick }) => {
+    const handleOnClick = () => {
+        onClick && onClick();
+    };
+    return (
+        <TableBodyRowBase onClick={handleOnClick}>{children}</TableBodyRowBase>
+    );
 };
