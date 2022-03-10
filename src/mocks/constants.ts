@@ -418,6 +418,13 @@ export const BUSINESS_MODELS = [
     'Transactional',
     'Subscription'
 ];
+export const DIC: { [roundNumber: number]: string } = {
+    0: 'Seed',
+    1: 'Series A',
+    2: 'Series B',
+    3: 'Series C',
+    4: 'Series D'
+};
 
 export interface FundingRound {
     [name: string]: [number, number];
@@ -460,14 +467,6 @@ export interface Company {
 export interface Companies {
     [id: string]: Company;
 }
-
-export const DIC: { [roundNumber: number]: string } = {
-    0: 'Seed',
-    1: 'Series A',
-    2: 'Series B',
-    3: 'Series C',
-    4: 'Series D'
-};
 
 export interface FundedCompany {
     name: string;

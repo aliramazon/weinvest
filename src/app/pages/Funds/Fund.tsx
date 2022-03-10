@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+
 import {
     Table,
     TableHead,
@@ -13,13 +14,11 @@ import { roundNumber, formatPercentage, formatFunds } from '../../../utils';
 export const Fund = () => {
     const {
         state: {
-            funds: { data },
-            companies
+            funds: { data }
         }
     } = useStore();
 
     const { fundId } = useParams();
-    console.log(companies);
 
     return (
         <Table>
@@ -33,6 +32,7 @@ export const Fund = () => {
             </TableHead>
             <TableBody>
                 {fundId &&
+                    data &&
                     data[fundId].investedIn.map((company) => {
                         return (
                             <TableRow key={company.id}>
