@@ -40,6 +40,24 @@ const GlobalStyle = createGlobalStyle`${css`
         --greenColor-40: #c4f8e2;
         --greenColor-30: #daf9ec;
 
+        --redColor-100: #f0142f;
+        --redColor-90: #f12b43;
+        --redColor-80: #f34359;
+        --redColor-70: #48e9a5;
+        --redColor-60: #f8919d;
+        --redColor-50: #fab3bc;
+        --redColor-40: #fcd5d9;
+        --redColor-30: #fde7ea;
+
+        --yellowColor-100: #f99600;
+        --yellowColor-90: #ffc700;
+        --yellowColor-80: #ffd613;
+        --yellowColor-70: #ffe45f;
+        --yellowColor-60: #ffe582;
+        --yellowColor-50: #ffeca3;
+        --yellowColor-40: #fff4c9;
+        --yellowColor-30: #fff9e1;
+
         --whiteColor: #ffffff;
 
         // SPACING
