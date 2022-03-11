@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
 import { RowLink } from '../../../components';
+import styled from 'styled-components';
 
 import {
     AppContentLayout,
@@ -17,7 +17,7 @@ import {
 } from '../../../components';
 import { useStore } from '../../../context/AppContext';
 import { Actions } from '../../../store';
-import { Fund } from '../../../mocks';
+import { Company } from '../../../mocks';
 
 const Container = styled(TableCard)`
     display: grid;
@@ -25,35 +25,36 @@ const Container = styled(TableCard)`
     gap: var(--spacing-7);
 `;
 
-export const Funds = () => {
+export const Companies = () => {
     const {
         state: {
-            funds: { data }
+            companies: { data }
         },
         dispatch
     } = useStore();
+
     useEffect(() => {
         dispatch({
-            type: Actions.FETCH_FUNDS_DATA
+            type: Actions.FETCH_COMPANIES_DATA
         });
     }, [dispatch]);
 
     return (
         <AppContentLayout>
-            <AppContentHeader title="Funds" />
+            <AppContentHeader title="Companies" />
             <Container>
                 <Table>
                     <TableHead>
-                        <TableHeadCell>Fund Name</TableHeadCell>
+                        <TableHeadCell>Company Name</TableHeadCell>
                     </TableHead>
                     <TableBody>
                         {data &&
-                            Object.values(data).map((fund: Fund) => {
+                            Object.values(data).map((company: Company) => {
                                 return (
-                                    <RowLink to={fund.id} key={fund.id}>
+                                    <RowLink to={company.id} key={company.id}>
                                         <TableRow>
                                             <TableBodyCell>
-                                                {fund.name}
+                                                {company.info.name}
                                             </TableBodyCell>
                                         </TableRow>
                                     </RowLink>

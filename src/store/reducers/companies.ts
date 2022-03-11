@@ -8,7 +8,7 @@ export const companies = (
     action: ActionType
 ): CompaniesState => {
     switch (action.type) {
-        case Actions.FETCH_FUNDS_DATA:
+        case Actions.FETCH_COMPANIES_DATA:
             state.data = api.fetchCompaniesData();
             return state;
         default:

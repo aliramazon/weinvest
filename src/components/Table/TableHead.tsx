@@ -4,6 +4,7 @@ import { TableRowBase } from './TableRow';
 
 const TableHeadBase = styled.div`
     border-bottom: 0.2rem solid var(--generalColor-40);
+    width: 100%;
 `;
 
 export const TableHead: React.FC<{ children: React.ReactNode }> = ({
