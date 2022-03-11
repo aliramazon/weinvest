@@ -1,3 +1,3 @@
-export { default as generateCompanyData } from './companyData';
-export { default as generateFundsData } from './fundData';
-export * from './constants';
+export { default as generateCompanyData } from './generateCompaniesData';
+export { default as generateFundsData } from './generateFundsData';
+export * from './types';

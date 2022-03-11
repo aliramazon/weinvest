@@ -1,5 +1,12 @@
 import { nanoid } from 'nanoid';
-import { EmailWebsites, FundingRound, Company, Companies } from './constants';
+import {
+    EmailWebsites,
+    FundingRound,
+    Company,
+    Companies,
+    Months,
+    Years
+} from './types';
 
 export const pickRandomIdx = (maxIdx: number): number => {
     return Math.floor(Math.random() * maxIdx);
@@ -29,6 +36,16 @@ const getCompanyEmailAndWebsite = (
     };
 };
 
+const getCompanyFoundedTime = (MONTHS: Months[], YEARS: Years[]) => {
+    const randomMonthsIdx = pickRandomIdx(MONTHS.length);
+    const randomYearsIdx = pickRandomIdx(YEARS.length);
+
+    return {
+        month: MONTHS[randomMonthsIdx],
+        year: YEARS[randomYearsIdx]
+    };
+};
+
 const calculateFundingRounds = (FUNDING_ROUNDS: FundingRound[]) => {
     const randomIdx = pickRandomIdx(FUNDING_ROUNDS.length);
     const givenEquity = [18, 15, 20, 10, 10];
@@ -48,7 +65,7 @@ const calculateFundingRounds = (FUNDING_ROUNDS: FundingRound[]) => {
             100000;
 
         return {
-            [roundName]: raisedAmount,
+            round: { name: roundName, amount: raisedAmount },
             totalRaised: totalRaised,
             postMoneyValuation: valuation,
             givenEquity: givenEquity[idx]
@@ -73,7 +90,9 @@ const generateCompanyData = (
     HQ: string[],
     INDUSTRIES: string[],
     BUSINESS_MODELS: string[],
-    FUNDING_ROUNDS: FundingRound[]
+    FUNDING_ROUNDS: FundingRound[],
+    MONTHS: Months[],
+    YEARS: Years[]
 ) => {
     const data: Companies = {};
 
@@ -88,11 +107,17 @@ const generateCompanyData = (
             EMAIL_WEBSITES,
             company.toLowerCase()
         );
+
+        const companyFoundedTime = getCompanyFoundedTime(MONTHS, YEARS);
         const info = {
             name: company[0].toUpperCase() + company.toLowerCase().slice(1),
             hq: getCompanyHQ(HQ),
             email: companyEmailAndWebsite.email,
-            website: companyEmailAndWebsite.website
+            website: companyEmailAndWebsite.website,
+            founded: {
+                year: companyFoundedTime.year,
+                month: companyFoundedTime.month
+            }
         };
 
         const business = {

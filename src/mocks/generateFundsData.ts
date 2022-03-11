@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
-import { Companies, Fund, Funds, DIC } from './constants';
-import { pickRandomIdx } from './companyData';
+import { Companies, Fund, Funds } from './types';
+import { pickRandomIdx } from './generateCompaniesData';
 
 const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
     const companies = Object.values(COMPANIES);
@@ -29,12 +29,14 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
             const company = companies[i];
             const companyFundingRounds = company.business.fundingRounds;
             let investedRoundIdx = pickRandomIdx(companyFundingRounds.length);
-            const investedRoundName = DIC[investedRoundIdx];
+
+            const investedRoundName =
+                companyFundingRounds[investedRoundIdx].round.name;
             const randomShares = [10, 20, 30, 15, 25];
             const shareOfTheRound =
                 randomShares[pickRandomIdx(randomShares.length)];
             const investedAmount = Math.floor(
-                (companyFundingRounds[investedRoundIdx][investedRoundName] *
+                (companyFundingRounds[investedRoundIdx].round.amount *
                     shareOfTheRound) /
                     100
             );
