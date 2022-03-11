@@ -22,6 +22,24 @@ const GlobalStyle = createGlobalStyle`${css`
         --primaryColor-40: #3d9e4ff;
         --primaryColor-30: #ecf2ff;
 
+        --secondaryColor-100: #6e0bd4;
+        --secondaryColor-90: #8125df;
+        --secondaryColor-80: #9645e9;
+        --secondaryColor-70: #a75ef1;
+        --secondaryColor-60: #b97ff3;
+        --secondaryColor-50: #d8b1ff;
+        --secondaryColor-40: #e9d3ff;
+        --secondaryColor-30: #f4e9fe;
+
+        --greenColor-100: #06a561;
+        --greenColor-90: #1fd286;
+        --greenColor-80: #25e191;
+        --greenColor-70: #48e9a5;
+        --greenColor-60: #74efb9;
+        --greenColor-50: #95f6cc;
+        --greenColor-40: #c4f8e2;
+        --greenColor-30: #daf9ec;
+
         --whiteColor: #ffffff;
 
         // SPACING
