@@ -23,13 +23,13 @@ export interface FundingRound {
     [name: string]: [number, number];
 }
 
-interface CalculatedFundingRound {
+export interface CalculatedFundingRound {
     round: { name: string; amount: number };
     totalRaised: number;
     postMoneyValuation: number;
     givenEquity: number;
 }
-interface CompanyInfo {
+export interface CompanyInfo {
     name: string;
     hq: string;
     email: string;
@@ -39,7 +39,7 @@ interface CompanyInfo {
         month: Months;
     };
 }
-interface CompanyBusiness {
+export interface CompanyBusiness {
     industry: string;
     businessModel: string;
     fundingRounds: CalculatedFundingRound[];

@@ -1,0 +1,34 @@
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import { PieChartProps } from './PieChartProps';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+export const PieChart: React.FC<PieChartProps> = ({ labels, data, label }) => {
+    const config = {
+        labels: labels,
+        datasets: [
+            {
+                data: data,
+                lebel: label,
+                backgroundColor: [
+                    'rgba(30, 94, 255, 0.2)',
+                    'rgba(110, 11, 212, 0.2)',
+                    'rgba(6, 165, 97, 0.2)',
+                    'rgba(240, 20, 47, 0.2)',
+                    'rgba(249, 150, 0, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(30, 94, 255, 1)',
+                    'rgba(110, 11, 212, 1)',
+                    'rgba(6, 165, 97, 1)',
+                    'rgba(240, 20, 47, 1)',
+                    'rgba(249, 150, 0, 1)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    return <Pie data={config} />;
+};

@@ -3,9 +3,6 @@ import { Companies, Funds } from '../mocks';
 import funds from '../mocks/funds.json';
 import companies from '../mocks/companies.json';
 
-const isDataAvailable = <T>(obj: T): boolean => {
-    return Object.keys(obj).length > 0;
-};
 class API {
     companiesData: Companies;
     fundsData: Funds;
