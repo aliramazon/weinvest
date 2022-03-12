@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useStore } from '../../../context/AppContext';
-import { PieChart, VerticalBarChart } from '../../../components';
+import { PieChart, VerticalBarChart, Card } from '../../../components';
 
 const Container = styled.div`
     display: grid;
@@ -20,7 +20,7 @@ const VerticalBarChartContainer = styled.div`
     width: 55rem;
 `;
 
-const ContentItem = styled.div`
+const ContentItem = styled(Card)`
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -55,14 +55,14 @@ export const Company = () => {
         );
 
         const totalRaisedDataset = {
-            label: 'Total Funding After Each Round',
+            label: 'Total Funding',
             data: company.business.fundingRounds.map(
                 (round) => round.totalRaised
             )
         };
 
         const postMoneyValuationDataset = {
-            label: 'Post Money Valuation',
+            label: 'Valuation',
             data: company.business.fundingRounds.map(
                 (round) => round.postMoneyValuation
             )
@@ -94,7 +94,7 @@ export const Company = () => {
                         />
                     </VerticalBarChartContainer>
                     <ContentDescription>
-                        Total Funding and Valuation
+                        Total Funding and Valuation After Each Round
                     </ContentDescription>
                 </ContentItem>
             </Container>
