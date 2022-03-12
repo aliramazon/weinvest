@@ -10,3 +10,4 @@ export * from './Layout';
 export * from './Table';
 export * from './PieChart';
 export * from './VerticalBarChart';
+export * from './DoughnutChart';
