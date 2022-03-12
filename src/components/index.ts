@@ -9,3 +9,4 @@ export * from './Card';
 export * from './Layout';
 export * from './Table';
 export * from './PieChart';
+export * from './VerticalBarChart';

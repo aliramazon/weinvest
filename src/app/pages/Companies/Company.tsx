@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useStore } from '../../../context/AppContext';
-import { PieChart } from '../../../components';
+import { PieChart, VerticalBarChart } from '../../../components';
 
 const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-
+    gap: var(--spacing-5);
     min-height: 0;
 `;
 
@@ -16,17 +16,21 @@ const PieChartContainer = styled.div`
     width: 35rem;
 `;
 
+const VerticalBarChartContainer = styled.div`
+    width: 55rem;
+`;
+
 const ContentItem = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: var(--spacing-5);
 `;
 
 const ContentDescription = styled.h2`
     font-size: var(--font-size-3);
-    font-weight: var(--font-weight-300);
+    font-weight: var(--font-weight-400);
     color: var(--generalColor-80);
 `;
 
@@ -50,6 +54,20 @@ export const Company = () => {
             (round) => round.round.amount
         );
 
+        const totalRaisedDataset = {
+            label: 'Total Funding After Each Round',
+            data: company.business.fundingRounds.map(
+                (round) => round.totalRaised
+            )
+        };
+
+        const postMoneyValuationDataset = {
+            label: 'Post Money Valuation',
+            data: company.business.fundingRounds.map(
+                (round) => round.postMoneyValuation
+            )
+        };
+
         return (
             <Container>
                 <ContentItem>
@@ -62,6 +80,21 @@ export const Company = () => {
                     </PieChartContainer>
                     <ContentDescription>
                         Funds raised in each round
+                    </ContentDescription>
+                </ContentItem>
+
+                <ContentItem>
+                    <VerticalBarChartContainer>
+                        <VerticalBarChart
+                            labels={roundsNames}
+                            datasets={[
+                                totalRaisedDataset,
+                                postMoneyValuationDataset
+                            ]}
+                        />
+                    </VerticalBarChartContainer>
+                    <ContentDescription>
+                        Total Funding and Valuation
                     </ContentDescription>
                 </ContentItem>
             </Container>
