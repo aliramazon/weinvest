@@ -44,5 +44,5 @@ export const VerticalBarChart: React.FC<VerticalBarChartProps> = ({
         datasets: finalDatasets
     };
 
-    return <Bar data={finalData} />;
+    return <Bar data={finalData} options={{ maintainAspectRatio: false }} />;
 };

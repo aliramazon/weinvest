@@ -17,25 +17,18 @@ const Container = styled.div`
 `;
 
 const PieChartContainer = styled.div`
-    & canvas {
-        width: 100%;
-        height: 100%;
-    }
+    height: 100%;
+    width: 100%;
 `;
 
 const VerticalBarChartContainer = styled.div`
     height: 100%;
-    & canvas {
-        width: auto;
-        height: 100%;
-    }
+    width: 100%;
 `;
 
 const DoughnutChartContainer = styled.div`
-    & canvas {
-        width: 100%;
-        height: 100%;
-    }
+    height: 100%;
+    width: 100%;
 `;
 
 const ContentItem = styled(Card)`

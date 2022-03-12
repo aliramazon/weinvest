@@ -34,5 +34,5 @@ export const DoughnutChart: React.FC<DoughnutProps> = ({
         ]
     };
 
-    return <Doughnut data={config} />;
+    return <Doughnut data={config} options={{ maintainAspectRatio: false }} />;
 };

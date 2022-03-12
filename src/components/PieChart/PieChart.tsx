@@ -30,5 +30,5 @@ export const PieChart: React.FC<PieChartProps> = ({ labels, data, label }) => {
         ]
     };
 
-    return <Pie data={config} />;
+    return <Pie data={config} options={{ maintainAspectRatio: false }} />;
 };
