@@ -1,8 +1,14 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import styled from 'styled-components';
 import { PieChartProps } from './PieChartProps';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+const Wrapper = styled.div`
+    width: 100%;
+    height: 100%;
+`;
 
 export const PieChart: React.FC<PieChartProps> = ({ labels, data, label }) => {
     const config = {
@@ -30,5 +36,9 @@ export const PieChart: React.FC<PieChartProps> = ({ labels, data, label }) => {
         ]
     };
 
-    return <Pie data={config} options={{ maintainAspectRatio: false }} />;
+    return (
+        <Wrapper>
+            <Pie data={config} options={{ maintainAspectRatio: false }} />
+        </Wrapper>
+    );
 };

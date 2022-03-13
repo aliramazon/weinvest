@@ -1,8 +1,14 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import styled from 'styled-components';
 import { DoughnutProps } from './DoughnutProps';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+const Wrapper = styled.div`
+    height: 100%;
+    width: 100%;
+`;
 
 export const DoughnutChart: React.FC<DoughnutProps> = ({
     labels,
@@ -34,5 +40,9 @@ export const DoughnutChart: React.FC<DoughnutProps> = ({
         ]
     };
 
-    return <Doughnut data={config} options={{ maintainAspectRatio: false }} />;
+    return (
+        <Wrapper>
+            <Doughnut data={config} options={{ maintainAspectRatio: false }} />
+        </Wrapper>
+    );
 };

@@ -8,6 +8,7 @@ import {
     Legend
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import styled from 'styled-components';
 import { VerticalBarChartProps, FinalDataset } from './VerticalBarChartProps';
 
 ChartJS.register(
@@ -27,6 +28,10 @@ const bgColors = [
     'rgba(249, 150, 0, 0.2)'
 ];
 
+const Wrapper = styled.div`
+    height: 100%;
+    width: 100%;
+`;
 export const VerticalBarChart: React.FC<VerticalBarChartProps> = ({
     labels,
     datasets
@@ -43,6 +48,9 @@ export const VerticalBarChart: React.FC<VerticalBarChartProps> = ({
         labels: labels,
         datasets: finalDatasets
     };
-
-    return <Bar data={finalData} options={{ maintainAspectRatio: false }} />;
+    return (
+        <Wrapper>
+            <Bar data={finalData} options={{ maintainAspectRatio: false }} />
+        </Wrapper>
+    );
 };
