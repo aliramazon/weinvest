@@ -5,8 +5,12 @@ import {
     PieChart,
     VerticalBarChart,
     DoughnutChart,
-    Card
+    Card,
+    KeyValueInterface,
+    KeyValueList
 } from '../../../components';
+import { CompanyBusiness, CompanyInfo } from '../../../mocks';
+import { uppercaseString, formatFunds } from '../../../utils';
 
 const Container = styled.div`
     display: grid;
@@ -16,22 +20,7 @@ const Container = styled.div`
     min-height: 0;
 `;
 
-const PieChartContainer = styled.div`
-    height: 100%;
-    width: 100%;
-`;
-
-const VerticalBarChartContainer = styled.div`
-    height: 100%;
-    width: 100%;
-`;
-
-const DoughnutChartContainer = styled.div`
-    height: 100%;
-    width: 100%;
-`;
-
-const ContentItem = styled(Card)`
+const VisualContent = styled(Card)`
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -39,10 +28,16 @@ const ContentItem = styled(Card)`
     gap: var(--spacing-5);
 `;
 
-const ContentDescription = styled.p`
+const ChartDescription = styled.p`
     font-size: var(--font-size-2);
     font-weight: var(--font-weight-400);
     color: var(--generalColor-90);
+`;
+
+const CompanyFacts = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-5);
 `;
 
 export const Company = () => {
@@ -82,47 +77,89 @@ export const Company = () => {
             (round) => round.givenEquity
         );
 
+        const getCompanyInfo = (companyInfo: CompanyInfo) => {
+            const keyValues: KeyValueInterface[] = [];
+            let key: keyof typeof companyInfo;
+            for (key in companyInfo) {
+                if (key !== 'founded') {
+                    keyValues.push({
+                        key: uppercaseString(key),
+                        value: company.info[key]
+                    });
+                }
+            }
+            keyValues.push({
+                key: 'Founded',
+                value: `${company.info.founded.month}, ${company.info.founded.year}`
+            });
+            return keyValues;
+        };
+
+        const getCompanyBusiness = (companyBusiness: CompanyBusiness) => {
+            return [
+                { key: 'Industry', value: companyBusiness.industry },
+                {
+                    key: 'Model',
+                    value: companyBusiness.businessModel
+                },
+                {
+                    key: 'Total Raised',
+                    value: formatFunds(companyBusiness.totalRaised)
+                },
+                {
+                    key: 'Last Round',
+                    value: companyBusiness.fundingRounds[
+                        companyBusiness.fundingRounds.length - 1
+                    ].round.name
+                },
+                {
+                    key: 'Valuation',
+                    value: formatFunds(companyBusiness.valuation)
+                }
+            ];
+        };
+
         return (
             <Container>
-                <ContentItem>
-                    <PieChartContainer>
-                        <PieChart
-                            labels={roundsNames}
-                            data={raisedAmounts}
-                            label="Raised in each round"
-                        />
-                    </PieChartContainer>
-                    <ContentDescription>
+                <CompanyFacts>
+                    <KeyValueList data={getCompanyInfo(company.info)} />
+                    <KeyValueList data={getCompanyBusiness(company.business)} />
+                </CompanyFacts>
+                <VisualContent>
+                    <PieChart
+                        labels={roundsNames}
+                        data={raisedAmounts}
+                        label="Raised in each round"
+                    />
+                    <ChartDescription>
                         Funds raised in each round
-                    </ContentDescription>
-                </ContentItem>
-                <ContentItem>
-                    <DoughnutChartContainer>
-                        <DoughnutChart
-                            labels={roundsNames}
-                            data={givenEquities}
-                            label="Given Equity"
-                        />
-                    </DoughnutChartContainer>
-                    <ContentDescription>
-                        Given Equity In Each Round (%)
-                    </ContentDescription>
-                </ContentItem>
-                <div />
-                <ContentItem>
-                    <VerticalBarChartContainer>
-                        <VerticalBarChart
-                            labels={roundsNames}
-                            datasets={[
-                                totalRaisedDataset,
-                                postMoneyValuationDataset
-                            ]}
-                        />
-                    </VerticalBarChartContainer>
-                    <ContentDescription>
+                    </ChartDescription>
+                </VisualContent>
+                <VisualContent>
+                    <VerticalBarChart
+                        labels={roundsNames}
+                        datasets={[
+                            totalRaisedDataset,
+                            postMoneyValuationDataset
+                        ]}
+                    />
+
+                    <ChartDescription>
                         Total Funding and Valuation After Each Round
-                    </ContentDescription>
-                </ContentItem>
+                    </ChartDescription>
+                </VisualContent>
+
+                <VisualContent>
+                    <DoughnutChart
+                        labels={roundsNames}
+                        data={givenEquities}
+                        label="Given Equity"
+                    />
+
+                    <ChartDescription>
+                        Given Equity In Each Round (%)
+                    </ChartDescription>
+                </VisualContent>
             </Container>
         );
     } else {

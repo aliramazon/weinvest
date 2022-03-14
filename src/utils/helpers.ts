@@ -11,3 +11,7 @@ export const formatFunds = (value: number) => {
 export const formatPercentage = (value: number) => {
     return `${roundNumber(value)}%`;
 };
+
+export const uppercaseString = (str: string) => {
+    return str[0].toUpperCase() + str.slice(1).toLowerCase();
+};

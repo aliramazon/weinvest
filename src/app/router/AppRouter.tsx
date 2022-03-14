@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from '../App';
-import { Funds, Fund, Companies, Company } from '../pages';
+import { Funds, Fund, Companies, Company, CompaniesIndex } from '../pages';
 
 export const AppRouter = () => {
     return (
@@ -13,6 +13,7 @@ export const AppRouter = () => {
                     </Route>
 
                     <Route path="companies" element={<Companies />}>
+                        <Route index element={<CompaniesIndex />} />
                         <Route path=":companyId" element={<Company />} />
                     </Route>
                     <Route
