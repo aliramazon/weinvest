@@ -21,7 +21,6 @@ export const Fund = () => {
     } = useStore();
 
     const { fundId } = useParams();
-
     return (
         <Table>
             <TableHead>
@@ -42,7 +41,7 @@ export const Fund = () => {
                                     {company.name}
                                 </TableRowHeadCell>
                                 <TableBodyCell>
-                                    <Badge color="blue">
+                                    <Badge color="green" light>
                                         {company.investedRound}
                                     </Badge>
                                 </TableBodyCell>
@@ -60,7 +59,7 @@ export const Fund = () => {
                                     {formatFunds(company.impliedValue)}
                                 </TableBodyCell>
                                 <TableBodyCell>
-                                    <Badge color="green">
+                                    <Badge color="blue">
                                         {roundNumber(company.multiple)}
                                     </Badge>
                                 </TableBodyCell>

@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`${css`
         --primaryColor-70: #608dff;
         --primaryColor-60: #89abff;
         --primaryColor-50: #b6cbff;
-        --primaryColor-40: #3d9e4ff;
+        --primaryColor-40: #d9e4ff;
         --primaryColor-30: #ecf2ff;
 
         --secondaryColor-100: #6e0bd4;
