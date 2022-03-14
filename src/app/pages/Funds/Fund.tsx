@@ -5,8 +5,10 @@ import {
     TableHead,
     TableBody,
     TableBodyCell,
+    TableRowHeadCell,
     TableHeadCell,
-    TableRow
+    TableRow,
+    Badge
 } from '../../../components';
 import { useStore } from '../../../context/AppContext';
 import { roundNumber, formatPercentage, formatFunds } from '../../../utils';
@@ -36,23 +38,31 @@ export const Fund = () => {
                     data[fundId].investedIn.map((company) => {
                         return (
                             <TableRow key={company.id}>
-                                <TableBodyCell>{company.name}</TableBodyCell>
+                                <TableRowHeadCell>
+                                    {company.name}
+                                </TableRowHeadCell>
                                 <TableBodyCell>
-                                    {company.investedRound}
+                                    <Badge color="blue">
+                                        {company.investedRound}
+                                    </Badge>
                                 </TableBodyCell>
                                 <TableBodyCell>
                                     {formatFunds(company.investedAmount)}
                                 </TableBodyCell>
                                 <TableBodyCell>
-                                    {formatPercentage(
-                                        company.ownershipPercentage
-                                    )}
+                                    <Badge>
+                                        {formatPercentage(
+                                            company.ownershipPercentage
+                                        )}
+                                    </Badge>
                                 </TableBodyCell>
                                 <TableBodyCell>
                                     {formatFunds(company.impliedValue)}
                                 </TableBodyCell>
                                 <TableBodyCell>
-                                    {roundNumber(company.multiple)}
+                                    <Badge color="green">
+                                        {roundNumber(company.multiple)}
+                                    </Badge>
                                 </TableBodyCell>
                             </TableRow>
                         );
