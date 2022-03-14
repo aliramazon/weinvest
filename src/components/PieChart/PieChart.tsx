@@ -18,11 +18,11 @@ export const PieChart: React.FC<PieChartProps> = ({ labels, data, label }) => {
                 data: data,
                 lebel: label,
                 backgroundColor: [
-                    'rgba(30, 94, 255, 0.2)',
-                    'rgba(110, 11, 212, 0.2)',
-                    'rgba(6, 165, 97, 0.2)',
-                    'rgba(240, 20, 47, 0.2)',
-                    'rgba(249, 150, 0, 0.2)'
+                    'rgba(30, 94, 255, 0.5)',
+                    'rgba(110, 11, 212, 0.5)',
+                    'rgba(6, 165, 97, 0.5)',
+                    'rgba(240, 20, 47, 0.5)',
+                    'rgba(249, 150, 0, 0.5)'
                 ],
                 borderColor: [
                     'rgba(30, 94, 255, 1)',

@@ -1,3 +1,4 @@
+export * from './TableRowHeadCell';
 export * from './TableBodyCell';
 export * from './TableHeadCell';
 export * from './TableRow';

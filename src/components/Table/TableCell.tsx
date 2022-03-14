@@ -9,5 +9,4 @@ export const TableCell = styled.div<{ align?: CellAlign }>`
 
     font-size: var(--font-size-2);
     font-weight: var(--font-weight-300);
-    color: var(--generalColor-100);
 `;
