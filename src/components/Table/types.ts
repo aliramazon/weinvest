@@ -10,7 +10,7 @@ export interface TableCellProps {
 export interface TableHeadCellProps extends TableCellProps {
     onClick?: (columnIdx: string) => void;
     sortable?: boolean;
-    columnIdx: string;
+    columnIdx?: string;
 }
 
 export interface TableRowProps {
