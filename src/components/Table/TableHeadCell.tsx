@@ -1,15 +1,18 @@
-import styled from 'styled-components';
-import { TableCell } from './TableCell';
-import { TableCellProps } from './types';
+import styled from "styled-components";
+import { TableCell } from "./TableCell";
+import { TableHeadCellProps } from "./types";
 
 const TableHeadCellBase = styled(TableCell)`
     color: var(--generalColor-80);
     height: 4.4rem;
 `;
 
-export const TableHeadCell: React.FC<TableCellProps> = ({
+export const TableHeadCell: React.FC<TableHeadCellProps> = ({
     align,
-    children
+    children,
+    onClick,
+    sortable,
+    columnIdx
 }) => {
     return <TableHeadCellBase align={align}>{children}</TableHeadCellBase>;
 };
