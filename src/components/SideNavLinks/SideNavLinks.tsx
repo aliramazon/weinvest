@@ -13,11 +13,12 @@ const GroupHeading = styled.div`
 export const SideNavLinks: React.FC<SideNavLinksProps> = ({ links }) => {
     return (
         <>
-            {links.map(({ groupName, links }: SideNavLinksGroupProps) => (
-                <React.Fragment>
+            {links.map(({ groupName, links }: SideNavLinksGroupProps, idx) => (
+                <React.Fragment key={idx}>
                     {groupName && <GroupHeading>{groupName}</GroupHeading>}
-                    {links.map((link) => (
+                    {links.map((link, idx) => (
                         <SideNavLink
+                            key={idx}
                             to={link.to}
                             icon={link.icon}
                             text={link.text}

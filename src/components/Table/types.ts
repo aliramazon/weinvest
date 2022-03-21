@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export type CellAlign = "right" | "left" | "center";
+export type CellAlign = 'right' | 'left' | 'center';
 
 export interface TableCellProps {
     align?: CellAlign;
@@ -11,6 +11,7 @@ export interface TableHeadCellProps extends TableCellProps {
     onClick?: (columnIdx: string) => void;
     sortable?: boolean;
     columnIdx?: string;
+    sortDirection?: 'ASC' | 'DESC';
 }
 
 export interface TableRowProps {

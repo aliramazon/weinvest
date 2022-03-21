@@ -15,7 +15,7 @@ import {
     TableRow,
     Seperator
 } from '../../../components';
-import { useStore } from '../../../context/AppContext';
+import { useStore } from '../../../context';
 import { Actions } from '../../../store';
 import { Fund } from '../../../mocks';
 
@@ -32,6 +32,7 @@ export const Funds = () => {
         },
         dispatch
     } = useStore();
+
     useEffect(() => {
         dispatch({
             type: Actions.FETCH_FUNDS_DATA

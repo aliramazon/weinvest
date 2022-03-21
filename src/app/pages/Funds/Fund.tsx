@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import {
@@ -11,25 +12,77 @@ import {
     Badge
 } from '../../../components';
 import { useStore } from '../../../context/AppContext';
+
+import { Actions } from '../../../store';
 import { roundNumber, formatPercentage, formatFunds } from '../../../utils';
 
 export const Fund = () => {
+    const [sortDirection, setSortDirection] = useState<'ASC' | 'DESC'>();
+    const [activeColumnIdx, setActiveColumnIdx] = useState<string>('');
     const {
         state: {
             funds: { data }
-        }
+        },
+        dispatch
     } = useStore();
-
     const { fundId } = useParams();
+
+    useEffect(() => {
+        setActiveColumnIdx('');
+    }, [fundId]);
+
+    const onSort = (columnIdx: string) => {
+        dispatch({
+            type: Actions.SORT_FUNDS_INVESTEDIN,
+            payload: {
+                fundId: fundId!,
+                columnIdx: columnIdx,
+                sortDirection:
+                    columnIdx === activeColumnIdx
+                        ? sortDirection === 'ASC'
+                            ? 'DESC'
+                            : 'ASC'
+                        : 'ASC'
+            }
+        });
+        setSortDirection((prevDirection) => {
+            if (columnIdx === activeColumnIdx) {
+                return prevDirection === 'ASC' ? 'DESC' : 'ASC';
+            }
+            return 'ASC';
+        });
+        setActiveColumnIdx(columnIdx);
+    };
+
     return (
         <Table>
             <TableHead>
                 <TableHeadCell>Company</TableHeadCell>
                 <TableHeadCell>Invested Round</TableHeadCell>
-                <TableHeadCell>Invested Amount</TableHeadCell>
-                <TableHeadCell>Ownership</TableHeadCell>
-                <TableHeadCell>Implied Value</TableHeadCell>
-                <TableHeadCell>Multiple</TableHeadCell>
+                <TableHeadCell
+                    columnIdx="investedAmount"
+                    sortable
+                    onClick={onSort}
+                >
+                    Invested Amount
+                </TableHeadCell>
+                <TableHeadCell
+                    columnIdx="ownershipPercentage"
+                    sortable
+                    onClick={onSort}
+                >
+                    Ownership
+                </TableHeadCell>
+                <TableHeadCell
+                    columnIdx="impliedValue"
+                    sortable
+                    onClick={onSort}
+                >
+                    Implied Value
+                </TableHeadCell>
+                <TableHeadCell columnIdx="multiple" sortable onClick={onSort}>
+                    Multiple
+                </TableHeadCell>
             </TableHead>
             <TableBody>
                 {fundId &&

@@ -14,7 +14,7 @@ import {
     TableHeadCell,
     TableRow
 } from '../../../components';
-import { useStore } from '../../../context/AppContext';
+import { useStore } from '../../../context';
 import { Actions } from '../../../store';
 import { Company } from '../../../mocks';
 
