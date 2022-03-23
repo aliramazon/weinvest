@@ -12,6 +12,7 @@ export interface TableHeadCellProps extends TableCellProps {
     sortable?: boolean;
     columnIdx?: string;
     sortDirection?: 'ASC' | 'DESC';
+    activeColumnIdx?: string;
 }
 
 export interface TableRowProps {

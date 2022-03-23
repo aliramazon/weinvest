@@ -63,6 +63,8 @@ export const Fund = () => {
                     columnIdx="investedAmount"
                     sortable
                     onClick={onSort}
+                    sortDirection={sortDirection}
+                    activeColumnIdx={activeColumnIdx}
                 >
                     Invested Amount
                 </TableHeadCell>
@@ -70,6 +72,8 @@ export const Fund = () => {
                     columnIdx="ownershipPercentage"
                     sortable
                     onClick={onSort}
+                    sortDirection={sortDirection}
+                    activeColumnIdx={activeColumnIdx}
                 >
                     Ownership
                 </TableHeadCell>
@@ -77,10 +81,18 @@ export const Fund = () => {
                     columnIdx="impliedValue"
                     sortable
                     onClick={onSort}
+                    sortDirection={sortDirection}
+                    activeColumnIdx={activeColumnIdx}
                 >
                     Implied Value
                 </TableHeadCell>
-                <TableHeadCell columnIdx="multiple" sortable onClick={onSort}>
+                <TableHeadCell
+                    columnIdx="multiple"
+                    sortable
+                    onClick={onSort}
+                    sortDirection={sortDirection}
+                    activeColumnIdx={activeColumnIdx}
+                >
                     Multiple
                 </TableHeadCell>
             </TableHead>
