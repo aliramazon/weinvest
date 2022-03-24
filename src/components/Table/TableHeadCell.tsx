@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import { TableCell } from './TableCell';
 import { TableHeadCellProps, SortDirection } from './types';
 import chevronUp from './chevronUp.svg';
-import { hover } from '@testing-library/user-event/dist/hover';
 
 const TableHeadCellBase = styled(TableCell)<{ sortable?: boolean }>`
     color: var(--generalColor-80);
