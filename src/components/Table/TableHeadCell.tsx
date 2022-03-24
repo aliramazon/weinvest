@@ -14,31 +14,27 @@ const TableHeadCellBase = styled(TableCell)<{ sortable?: boolean }>`
 export const TableHeadCell: React.FC<TableHeadCellProps> = ({
     align,
     children,
-    onClick,
     sortable,
     columnIdx,
     sortDirection,
-    activeColumnIdx
+    activeColumnIdx,
+    onClick
 }) => {
-    const handleOnClick = () => {
-        if (sortable && columnIdx && onClick) {
-            onClick(columnIdx);
-        }
-    };
-
     return (
         <TableHeadCellBase
             align={align}
-            onClick={handleOnClick}
             sortable={sortable}
+            onClick={() => {
+                onClick && columnIdx && onClick(columnIdx);
+            }}
         >
             {children}
             {sortable &&
                 columnIdx === activeColumnIdx &&
                 (sortDirection === 'ASC' ? (
-                    <img src={chevronUp} />
+                    <img src={chevronUp} alt="↑" />
                 ) : (
-                    <img src={chevronDown} />
+                    <img src={chevronDown} alt="↓" />
                 ))}
         </TableHeadCellBase>
     );
