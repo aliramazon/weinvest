@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { TableCell } from './TableCell';
-import { TableHeadCellProps } from './types';
+import { TableHeadCellProps, SortDirection } from './types';
 import chevronDown from './chevronDown.svg';
 import chevronUp from './chevronUp.svg';
 
@@ -31,7 +31,7 @@ export const TableHeadCell: React.FC<TableHeadCellProps> = ({
             {children}
             {sortable &&
                 columnIdx === activeColumnIdx &&
-                (sortDirection === 'ASC' ? (
+                (sortDirection === SortDirection.ASC ? (
                     <img src={chevronUp} alt="↑" />
                 ) : (
                     <img src={chevronDown} alt="↓" />
