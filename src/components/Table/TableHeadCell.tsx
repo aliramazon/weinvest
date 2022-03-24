@@ -39,15 +39,21 @@ export const TableHeadCell: React.FC<TableHeadCellProps> = ({
             onClick={() => {
                 onClick && columnIdx && onClick(columnIdx);
             }}
-            onMouseOver={() => setHovered(true)}
+            onMouseOver={() => {
+                sortable &&
+                    !(columnIdx === activeColumnIdx) &&
+                    setHovered(true);
+            }}
             onMouseLeave={() => setHovered(false)}
         >
             {children}
             {showSortIcon && (
                 <SortIcon
                     src={chevronUp}
-                    alt={sortDirection === SortDirection.ASC ? '↑' : '↓'}
-                    isDescending={sortDirection === SortDirection.DESC}
+                    alt={'↕'}
+                    isDescending={
+                        sortDirection === SortDirection.DESC && !hovered
+                    }
                 />
             )}
         </TableHeadCellBase>
