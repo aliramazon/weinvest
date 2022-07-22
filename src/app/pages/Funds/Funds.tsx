@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
-import { RowLink } from '../../../components';
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { RowLink } from "../../../components";
 
 import {
     AppContentLayout,
@@ -14,10 +14,10 @@ import {
     TableHeadCell,
     TableRow,
     Seperator
-} from '../../../components';
-import { useStore } from '../../../context';
-import { Actions } from '../../../store';
-import { Fund } from '../../../mocks';
+} from "../../../components";
+import { useStore } from "../../../context";
+import { Actions } from "../../../store";
+import { Fund } from "../../../mocks";
 
 const Container = styled(TableCard)`
     display: grid;
@@ -32,12 +32,20 @@ export const Funds = () => {
         },
         dispatch
     } = useStore();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch({
             type: Actions.FETCH_FUNDS_DATA
         });
     }, [dispatch]);
+
+    useEffect(() => {
+        if (data) {
+            const firstFundId = Object.keys(data)[0];
+            navigate(`/funds/${firstFundId}`);
+        }
+    }, []);
 
     return (
         <AppContentLayout>

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
-import { useStore } from '../../../context/AppContext';
+import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import { useStore } from "../../../context/AppContext";
 import {
     PieChart,
     VerticalBarChart,
@@ -8,9 +8,9 @@ import {
     Card,
     KeyValueInterface,
     KeyValueList
-} from '../../../components';
-import { CompanyBusiness, CompanyInfo } from '../../../mocks';
-import { uppercaseString, formatFunds } from '../../../utils';
+} from "../../../components";
+import { CompanyBusiness, CompanyInfo } from "../../../mocks";
+import { uppercaseString, formatFunds } from "../../../utils";
 
 const Container = styled.div`
     display: grid;
@@ -60,14 +60,14 @@ export const Company = () => {
         );
 
         const totalRaisedDataset = {
-            label: 'Total Funding',
+            label: "Total Funding",
             data: company.business.fundingRounds.map(
                 (round) => round.totalRaised
             )
         };
 
         const postMoneyValuationDataset = {
-            label: 'Valuation',
+            label: "Valuation",
             data: company.business.fundingRounds.map(
                 (round) => round.postMoneyValuation
             )
@@ -81,7 +81,7 @@ export const Company = () => {
             const keyValues: KeyValueInterface[] = [];
             let key: keyof typeof companyInfo;
             for (key in companyInfo) {
-                if (key !== 'founded') {
+                if (key !== "founded") {
                     keyValues.push({
                         key: uppercaseString(key),
                         value: company.info[key]
@@ -89,7 +89,7 @@ export const Company = () => {
                 }
             }
             keyValues.push({
-                key: 'Founded',
+                key: "Founded",
                 value: `${company.info.founded.month}, ${company.info.founded.year}`
             });
             return keyValues;
@@ -97,23 +97,23 @@ export const Company = () => {
 
         const getCompanyBusiness = (companyBusiness: CompanyBusiness) => {
             return [
-                { key: 'Industry', value: companyBusiness.industry },
+                { key: "Industry", value: companyBusiness.industry },
                 {
-                    key: 'Model',
+                    key: "Model",
                     value: companyBusiness.businessModel
                 },
                 {
-                    key: 'Total Raised',
+                    key: "Total Raised",
                     value: formatFunds(companyBusiness.totalRaised)
                 },
                 {
-                    key: 'Last Round',
+                    key: "Last Round",
                     value: companyBusiness.fundingRounds[
                         companyBusiness.fundingRounds.length - 1
                     ].round.name
                 },
                 {
-                    key: 'Valuation',
+                    key: "Valuation",
                     value: formatFunds(companyBusiness.valuation)
                 }
             ];

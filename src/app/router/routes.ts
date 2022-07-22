@@ -1,51 +1,51 @@
-import { SideNavLinksGroupProps } from '../../components';
+import { SideNavLinksGroupProps } from "../../components";
 export const SIDE_NAV_LINKS_GROUPS: SideNavLinksGroupProps[] = [
     {
         links: [
             {
-                to: '/',
-                text: 'Dashboard',
-                icon: 'dashboard'
+                to: "/ipo-calendar",
+                text: "IPO Calendar",
+                icon: "dashboard"
             },
             {
-                to: 'funds',
-                text: 'Funds',
-                icon: 'funds'
+                to: "funds",
+                text: "Funds",
+                icon: "funds"
             },
             {
-                to: 'companies',
-                text: 'Companies',
-                icon: 'companies'
+                to: "companies",
+                text: "Companies",
+                icon: "companies"
             }
         ]
     },
     {
-        groupName: 'Legal',
+        groupName: "Legal",
         links: [
             {
-                to: 'documents',
-                text: 'Archive',
-                icon: 'documents'
+                to: "archive",
+                text: "Archive",
+                icon: "documents"
             },
             {
-                to: 'current-documents',
-                text: 'Current Documents',
-                icon: 'due-documents'
+                to: "documents",
+                text: "Current Documents",
+                icon: "documents"
             }
         ]
     },
     {
-        groupName: 'Settings',
+        groupName: "Settings",
         links: [
             {
-                to: 'members',
-                text: 'Users',
-                icon: 'members'
+                to: "users",
+                text: "Users",
+                icon: "members"
             },
             {
-                to: 'profile',
-                text: 'Account Settings',
-                icon: 'account'
+                to: "profile",
+                text: "Account Settings",
+                icon: "account"
             }
         ]
     }
