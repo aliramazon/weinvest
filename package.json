@@ -14,6 +14,7 @@
     "chart.js": "^3.7.1",
     "d3-format": "^3.1.0",
     "immer": "^9.0.12",
+    "moment": "^2.29.4",
     "nanoid": "^3.3.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.0.1",

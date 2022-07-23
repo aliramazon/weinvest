@@ -9,7 +9,7 @@ import {
     KeyValueInterface,
     KeyValueList
 } from "../../../components";
-import { CompanyBusiness, CompanyInfo } from "../../../mocks";
+import { CompanyBusiness, CompanyInfo } from "../../../types";
 import { uppercaseString, formatFunds } from "../../../utils";
 
 const Container = styled.div`

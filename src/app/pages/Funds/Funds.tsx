@@ -17,7 +17,7 @@ import {
 } from "../../../components";
 import { useStore } from "../../../context";
 import { Actions } from "../../../store";
-import { Fund } from "../../../mocks";
+import { Fund } from "../../../types";
 
 const Container = styled(TableCard)`
     display: grid;
@@ -45,7 +45,7 @@ export const Funds = () => {
             const firstFundId = Object.keys(data)[0];
             navigate(`/funds/${firstFundId}`);
         }
-    }, []);
+    }, [data]);
 
     return (
         <AppContentLayout>

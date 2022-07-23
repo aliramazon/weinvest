@@ -17,7 +17,7 @@ import {
 } from "../../../components";
 import { useStore } from "../../../context";
 import { Actions } from "../../../store";
-import { Company } from "../../../mocks";
+import { Company } from "../../../types";
 
 const Container = styled.div`
     display: grid;
@@ -46,7 +46,7 @@ export const Companies = () => {
             const firstCompanyId = Object.keys(data)[0];
             navigate(`/companies/${firstCompanyId}`);
         }
-    }, []);
+    }, [data]);
 
     return (
         <AppContentLayout>

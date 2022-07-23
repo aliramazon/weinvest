@@ -1,7 +1,7 @@
-import { Companies, Funds } from '../mocks';
+import { Companies, Funds } from "../types";
 
-import funds from '../mocks/funds.json';
-import companies from '../mocks/companies.json';
+import funds from "../mocks/funds.json";
+import companies from "../mocks/companies.json";
 
 class API {
     companiesData: Companies;

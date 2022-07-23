@@ -1,6 +1,6 @@
-import { nanoid } from 'nanoid';
-import { Companies, Fund, Funds } from './types';
-import { pickRandomIdx } from './generateCompaniesData';
+import { nanoid } from "nanoid";
+import { Companies, Fund, Funds } from "../types/types";
+import { pickRandomIdx } from "./generateCompaniesData";
 
 const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
     const companies = Object.values(COMPANIES);
@@ -19,9 +19,9 @@ const generateFundsData = (FUNDS: string[], COMPANIES: Companies) => {
             totalInvested: 0,
             highest: {
                 investedAmount: 0,
-                investedCompany: '',
+                investedCompany: "",
                 multiple: 0,
-                multipleCompany: ''
+                multipleCompany: ""
             }
         };
 

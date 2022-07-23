@@ -1,22 +1,22 @@
 export type Months =
-    | 'September'
-    | 'October'
-    | 'November'
-    | 'December'
-    | 'January'
-    | 'February'
-    | 'March'
-    | 'April'
-    | 'May'
-    | 'June'
-    | 'July'
-    | 'August';
+    | "September"
+    | "October"
+    | "November"
+    | "December"
+    | "January"
+    | "February"
+    | "March"
+    | "April"
+    | "May"
+    | "June"
+    | "July"
+    | "August";
 
 export type Years = 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018;
 
 export interface EmailWebsites {
     userName: string;
-    domain: 'io' | 'co' | 'com' | 'tech' | 'app';
+    domain: "io" | "co" | "com" | "tech" | "app";
 }
 
 export interface FundingRound {
@@ -82,4 +82,15 @@ export interface Fund {
 
 export interface Funds {
     [id: string]: Fund;
+}
+
+export interface CompanyIpo {
+    date: string;
+    exchange: string;
+    name: string;
+    numberOfShares: number;
+    price: string;
+    status: "expected" | "prices" | "withdrawn" | "filed";
+    symbol: "string";
+    totalSharesValue: number;
 }

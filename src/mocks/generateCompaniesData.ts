@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import { nanoid } from "nanoid";
 import {
     EmailWebsites,
     FundingRound,
@@ -6,7 +6,7 @@ import {
     Companies,
     Months,
     Years
-} from './types';
+} from "../types/types";
 
 export const pickRandomIdx = (maxIdx: number): number => {
     return Math.floor(Math.random() * maxIdx);

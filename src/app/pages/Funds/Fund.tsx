@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 import {
     Table,
@@ -9,11 +9,11 @@ import {
     TableHeadCell,
     TableRow,
     Badge
-} from '../../../components';
-import { useStore } from '../../../context/AppContext';
+} from "../../../components";
+import { useStore } from "../../../context/AppContext";
 
-import { Actions } from '../../../store';
-import { roundNumber, formatPercentage, formatFunds } from '../../../utils';
+import { Actions } from "../../../store";
+import { roundNumber, formatPercentage, formatFunds } from "../../../utils";
 
 export const Fund = () => {
     const {
@@ -24,7 +24,7 @@ export const Fund = () => {
     } = useStore();
     const { fundId } = useParams();
 
-    const onSort = (sortDirection: 'ASC' | 'DESC', columnIdx: string) => {
+    const onSort = (sortDirection: "ASC" | "DESC", columnIdx: string) => {
         dispatch({
             type: Actions.SORT_FUNDS_INVESTEDIN,
             payload: {
@@ -81,7 +81,7 @@ export const Fund = () => {
                                     {formatFunds(company.impliedValue)}
                                 </TableBodyCell>
                                 <TableBodyCell>
-                                    <Badge color="blue">
+                                    <Badge color="blue" light>
                                         {roundNumber(company.multiple)}
                                     </Badge>
                                 </TableBodyCell>
