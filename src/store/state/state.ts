@@ -1,4 +1,5 @@
-import { Funds, Companies } from '../../mocks';
+import { Funds, Companies, CompanyIpo } from "../../types";
+import moment from "moment";
 
 export interface FundsState {
     data: Funds;
@@ -7,10 +8,58 @@ export interface FundsState {
 export interface CompaniesState {
     data: Companies;
 }
+export interface IposByPeriod {
+    weekly: {
+        [week: string]: CompanyIpo[];
+    };
+    monthly: {
+        [month: string]: CompanyIpo[];
+    };
+}
+export interface IpoCalendarState {
+    data: IposByPeriod;
+    currentWeek: {
+        from: string;
+        to: string;
+    };
+    currentMonth: {
+        from: string;
+        to: string;
+    };
+    queryBy: "weekly" | "monthly";
+}
 
 export interface GlobalState {
     funds: FundsState;
     companies: CompaniesState;
+    ipoCalendar: IpoCalendarState;
 }
 
-export const initialState = { funds: {}, companies: {} } as GlobalState;
+export const initialState = {
+    funds: {},
+    companies: {},
+    ipoCalendar: {
+        data: { weekly: {}, monthly: {} },
+        currentWeek: {
+            from: moment()
+                .year(2022)
+                .week(1)
+                .startOf("isoWeek")
+                .format("YYYY-MM-DD"),
+            to: moment()
+                .year(2022)
+                .week(1)
+                .endOf("isoWeek")
+                .format("YYYY-MM-DD")
+        },
+        currentMonth: {
+            from: moment()
+                .year(2022)
+                .month(0)
+                .startOf("month")
+                .format("YYYY-MM-DD"),
+            to: moment().year(2022).month(0).endOf("month").format("YYYY-MM-DD")
+        },
+        queryBy: "weekly"
+    }
+} as GlobalState;

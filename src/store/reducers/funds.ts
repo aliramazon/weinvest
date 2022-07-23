@@ -1,7 +1,7 @@
-import { FundsState } from '../state/state';
-import { ActionType, Actions } from '../actions';
-import API from '../../api/';
-import { FundedCompany } from '../../mocks';
+import { FundsState } from "../state/state";
+import { ActionType, Actions } from "../actions";
+import API from "../../api/";
+import { FundedCompany } from "../../types";
 const api = new API();
 
 export const funds = (
@@ -17,7 +17,7 @@ export const funds = (
             fund.investedIn.sort((a: FundedCompany, b: FundedCompany) => {
                 const columnIdx = action.payload
                     .columnIdx as keyof FundedCompany;
-                if (action.payload.sortDirection === 'ASC') {
+                if (action.payload.sortDirection === "ASC") {
                     return (a[columnIdx] as number) - (b[columnIdx] as number);
                 }
                 return (b[columnIdx] as number) - (a[columnIdx] as number);
