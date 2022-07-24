@@ -90,7 +90,7 @@ export interface CompanyIpo {
     name: string;
     numberOfShares: number;
     price: string;
-    status: "expected" | "prices" | "withdrawn" | "filed";
+    status: "expected" | "priced" | "withdrawn" | "filed";
     symbol: "string";
     totalSharesValue: number;
 }

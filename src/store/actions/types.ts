@@ -2,6 +2,7 @@ import { FundsActions } from "./funds";
 import { CompaniesActions } from "./companies";
 import { IpoCalendarActions } from "./ipoCalendar";
 import { CompanyIpo } from "../../types";
+import { IpoQueryBy } from "../state";
 
 export const Actions = {
     ...FundsActions,
@@ -32,14 +33,14 @@ interface FetchIpoCalendar {
         from: string;
         to: string;
         data: CompanyIpo[];
-        queryBy: "weekly" | "monthly";
+        queryBy: IpoQueryBy;
     };
 }
 
 interface SetIpoQueryBy {
     type: IpoCalendarActions.SET_QUERY_BY;
     payload: {
-        queryBy: "weekly" | "monthly";
+        queryBy: IpoQueryBy;
     };
 }
 

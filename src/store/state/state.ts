@@ -16,17 +16,18 @@ export interface IposByPeriod {
         [month: string]: CompanyIpo[];
     };
 }
+
+export interface IpoCalendarRange {
+    from: string;
+    to: string;
+}
+
+export type IpoQueryBy = "weekly" | "monthly";
 export interface IpoCalendarState {
     data: IposByPeriod;
-    currentWeek: {
-        from: string;
-        to: string;
-    };
-    currentMonth: {
-        from: string;
-        to: string;
-    };
-    queryBy: "weekly" | "monthly";
+    currentWeek: IpoCalendarRange;
+    currentMonth: IpoCalendarRange;
+    queryBy: IpoQueryBy;
 }
 
 export interface GlobalState {

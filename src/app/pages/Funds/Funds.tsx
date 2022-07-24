@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { RowLink } from "../../../components";
 
@@ -33,6 +33,8 @@ export const Funds = () => {
         dispatch
     } = useStore();
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
 
     useEffect(() => {
         dispatch({
@@ -41,11 +43,11 @@ export const Funds = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (data) {
+        if (data && location.pathname === "/funds") {
             const firstFundId = Object.keys(data)[0];
             navigate(`/funds/${firstFundId}`);
         }
-    }, [data]);
+    }, [data, location.pathname, navigate]);
 
     return (
         <>

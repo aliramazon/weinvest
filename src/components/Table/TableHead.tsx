@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { TableRowBase } from './TableRow';
-import { SortDirection, TableHeadProps } from './types';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { TableRowBase } from "./TableRow";
+import { SortDirection, TableHeadProps } from "./types";
 
 const TableHeadBase = styled.div`
     border-bottom: 0.2rem solid var(--generalColor-40);
     width: 100%;
+    background-color: var(--whiteColor);
+    z-index: 1;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 `;
 
 export const TableHead: React.FC<TableHeadProps> = ({
@@ -16,7 +21,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
     const [sortDirection, setSortDirection] = useState<SortDirection>(
         SortDirection.ASC
     );
-    const [activeColumnIdx, setActiveColumnIdx] = useState<string>('');
+    const [activeColumnIdx, setActiveColumnIdx] = useState<string>("");
     const handleOnClick = (columnIdx: string) => {
         onSort &&
             onSort(
@@ -39,7 +44,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
     };
 
     useEffect(() => {
-        if (id) setActiveColumnIdx('');
+        if (id) setActiveColumnIdx("");
     }, [id]);
 
     const cells = React.Children.map(children, (child: JSX.Element) => {

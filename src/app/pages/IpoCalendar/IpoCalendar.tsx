@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
-import moment from "moment";
+
 import {
     AppContentHeader,
     Card,
@@ -9,12 +9,20 @@ import {
     TableBody,
     TableHeadCell,
     TableRow,
+    TableRowHeadCell,
     TableBodyCell,
-    ButtonFilter
+    ButtonFilter,
+    Badge,
+    BadgeColorProps
 } from "../../../components";
 import { useStore } from "../../../context";
 import { Actions, fetchIpos } from "../../../store";
-import { createKeyFromTwoDates } from "../../../utils";
+import {
+    createKeyFromTwoDates,
+    getIpoQueryRange,
+    formatFunds,
+    formatNumber
+} from "../../../utils";
 
 const CalendarControl = styled.div`
     font-size: var(--font-size-4);
@@ -33,6 +41,10 @@ const CalendarControl = styled.div`
         span {
             color: var(--generalColor-70);
             cursor: pointer;
+
+            &:hover {
+                color: var(--primaryColor-100);
+            }
         }
     }
 `;
@@ -41,6 +53,8 @@ const CalendarCard = styled(Card)`
 `;
 
 type QueryBy = "weekly" | "monthly";
+type QueryNext = "prev" | "next";
+
 export const IpoCalendar = () => {
     const {
         state: {
@@ -82,33 +96,21 @@ export const IpoCalendar = () => {
 
     const currentPeriodKey = getCurrentPeriodKey(queryBy);
 
-    const getIpos = (value: "prev" | "next") => {
-        let from = moment(currentWeek.from).add(1, "week").format("YYYY-MM-DD");
-        let to = moment(currentWeek.to).add(1, "week").format("YYYY-MM-DD");
-
-        if (value === "prev") {
-            if (queryBy === "weekly") {
-                from = moment(currentWeek.from)
-                    .subtract(1, "week")
-                    .format("YYYY-MM-DD");
-                to = moment(currentWeek.to)
-                    .subtract(1, "week")
-                    .format("YYYY-MM-DD");
-            } else {
-                from = moment(currentMonth.from)
-                    .subtract(1, "month")
-                    .format("YYYY-MM-DD");
-                to = moment(from).endOf("month").format("YYYY-MM-DD");
-            }
-        } else {
-            if (queryBy === "monthly") {
-                from = moment(currentMonth.from)
-                    .add(1, "month")
-                    .format("YYYY-MM-DD");
-                to = moment(from).endOf("month").format("YYYY-MM-DD");
-            }
-        }
+    const getIpos = (queryNext: QueryNext) => {
+        const { from, to } = getIpoQueryRange(
+            queryNext,
+            queryBy,
+            currentMonth,
+            currentWeek
+        );
         fetchIpos(from, to, queryBy, data, dispatch);
+    };
+
+    const IPO_STATUS_BADGE_MAP = {
+        withdrawn: "red",
+        priced: "blue",
+        filed: "yellow",
+        expected: "green"
     };
 
     return (
@@ -148,29 +150,47 @@ export const IpoCalendar = () => {
                             (company, idx) => {
                                 return (
                                     <TableRow key={idx}>
-                                        <TableBodyCell>
+                                        <TableRowHeadCell>
                                             {company.date}
-                                        </TableBodyCell>
+                                        </TableRowHeadCell>
                                         <TableBodyCell>
                                             {company.name}
                                         </TableBodyCell>
                                         <TableBodyCell align="center">
-                                            {company.symbol}
+                                            <Badge>
+                                                {company.symbol || "N/A"}
+                                            </Badge>
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.exchange}
                                         </TableBodyCell>
                                         <TableBodyCell>
-                                            {company.numberOfShares}
+                                            {formatNumber(
+                                                company.numberOfShares
+                                            )}
                                         </TableBodyCell>
                                         <TableBodyCell>
-                                            {company.price}
+                                            {company.price && (
+                                                <Badge color="blue">
+                                                    $ {company.price}
+                                                </Badge>
+                                            )}
                                         </TableBodyCell>
                                         <TableBodyCell>
-                                            {company.totalSharesValue}
+                                            {formatFunds(
+                                                company.totalSharesValue
+                                            )}
                                         </TableBodyCell>
                                         <TableBodyCell>
-                                            {company.status}
+                                            <Badge
+                                                color={
+                                                    IPO_STATUS_BADGE_MAP[
+                                                        company.status
+                                                    ] as BadgeColorProps
+                                                }
+                                            >
+                                                {company.status}
+                                            </Badge>
                                         </TableBodyCell>
                                     </TableRow>
                                 );

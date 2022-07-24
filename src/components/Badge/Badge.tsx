@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 
-interface BadgeProps {
-    color?: "blue" | "green" | "red" | "yellow";
+export type BadgeColorProps = "blue" | "green" | "red" | "yellow";
+export interface BadgeProps {
+    color?: BadgeColorProps;
     light?: boolean;
 }
 export const Badge = styled.div<BadgeProps>`

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
 import { RowLink } from "../../../components";
 import styled from "styled-components";
@@ -26,6 +26,7 @@ const Container = styled.div`
 
 const CompaniesCard = styled(Card)`
     flex-basis: 30rem;
+    flex-shrink: 0;
 `;
 
 export const Companies = () => {
@@ -36,6 +37,7 @@ export const Companies = () => {
         dispatch
     } = useStore();
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         dispatch({
@@ -44,11 +46,11 @@ export const Companies = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (data) {
+        if (data && location.pathname === "/companies") {
             const firstCompanyId = Object.keys(data)[0];
             navigate(`/companies/${firstCompanyId}`);
         }
-    }, [data]);
+    }, [data, location.pathname, navigate]);
 
     return (
         <>
