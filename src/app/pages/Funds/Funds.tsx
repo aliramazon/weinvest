@@ -22,7 +22,7 @@ const Container = styled(Card)`
     display: grid;
     grid-template-columns: 30rem 0.5rem 1fr;
     gap: var(--spacing-7);
-    height: calc(100% - 4rem);
+    height: calc(100% - 8rem);
 `;
 
 export const Funds = () => {

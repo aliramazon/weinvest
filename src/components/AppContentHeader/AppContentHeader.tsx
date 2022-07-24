@@ -6,6 +6,7 @@ const AppContentHeaderBase = styled.div`
     align-items: center;
     gap: var(--spacing-4);
     height: 5rem;
+    margin-bottom: var(--spacing-7);
 
     & > *:first-child {
         margin-right: auto;

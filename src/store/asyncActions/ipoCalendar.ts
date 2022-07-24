@@ -1,8 +1,20 @@
+import moment from "moment";
 import { FinnhubAPI } from "../../api";
 import { Actions, ActionType } from "../actions";
 import { IposByPeriod } from "../state";
 import { createKeyFromTwoDates } from "../../utils";
+import { CompanyIpo } from "../../types";
+
 const finnhub = new FinnhubAPI();
+
+const sortByDate = (ipos: CompanyIpo[]) => {
+    return ipos.sort((a: CompanyIpo, b: CompanyIpo) => {
+        if (moment(a.date) > moment(b.date)) {
+            return 1;
+        }
+        return -1;
+    });
+};
 
 export const fetchIpos = async (
     from: string,
@@ -12,10 +24,10 @@ export const fetchIpos = async (
     dispatch: (action: ActionType) => void
 ) => {
     const periodKey = createKeyFromTwoDates(from, to);
-    let ipos = [];
+    let ipos: CompanyIpo[] = [];
     if (!data[queryBy][periodKey]) {
         const { ipoCalendar } = await finnhub.fetchIPOCalendar(from, to);
-        ipos = ipoCalendar;
+        ipos = sortByDate([...ipoCalendar]);
     }
 
     dispatch({

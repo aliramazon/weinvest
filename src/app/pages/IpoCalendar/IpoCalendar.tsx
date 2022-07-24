@@ -37,7 +37,7 @@ const CalendarControl = styled.div`
     }
 `;
 const CalendarCard = styled(Card)`
-    height: calc(100% - 4rem);
+    height: calc(100% - 8rem);
 `;
 
 type QueryBy = "weekly" | "monthly";
@@ -83,17 +83,31 @@ export const IpoCalendar = () => {
     const currentPeriodKey = getCurrentPeriodKey(queryBy);
 
     const getIpos = (value: "prev" | "next") => {
-        let from, to;
-        from = moment(currentWeek.from).add(1, "week").format("YYYY-MM-DD");
-        to = moment(currentWeek.to).add(1, "week").format("YYYY-MM-DD");
-        // if (value === "next") {
-        //     if (queryBy === "weekly") {
-        //         from = moment(currentWeek.from)
-        //             .add(1, "week")
-        //             .format("YYYY-MM-DD");
-        //         to = moment(currentWeek.to).add(1, "week").format("YYYY-MM-DD");
-        //     }
-        // }
+        let from = moment(currentWeek.from).add(1, "week").format("YYYY-MM-DD");
+        let to = moment(currentWeek.to).add(1, "week").format("YYYY-MM-DD");
+
+        if (value === "prev") {
+            if (queryBy === "weekly") {
+                from = moment(currentWeek.from)
+                    .subtract(1, "week")
+                    .format("YYYY-MM-DD");
+                to = moment(currentWeek.to)
+                    .subtract(1, "week")
+                    .format("YYYY-MM-DD");
+            } else {
+                from = moment(currentMonth.from)
+                    .subtract(1, "month")
+                    .format("YYYY-MM-DD");
+                to = moment(from).endOf("month").format("YYYY-MM-DD");
+            }
+        } else {
+            if (queryBy === "monthly") {
+                from = moment(currentMonth.from)
+                    .add(1, "month")
+                    .format("YYYY-MM-DD");
+                to = moment(from).endOf("month").format("YYYY-MM-DD");
+            }
+        }
         fetchIpos(from, to, queryBy, data, dispatch);
     };
 

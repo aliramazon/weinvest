@@ -21,7 +21,7 @@ import { Company } from "../../../types";
 const Container = styled.div`
     display: flex;
     gap: var(--spacing-7);
-    height: calc(100% - 4rem);
+    height: calc(100% - 8rem);
 `;
 
 const CompaniesCard = styled(Card)`
