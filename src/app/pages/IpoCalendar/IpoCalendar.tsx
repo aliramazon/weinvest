@@ -13,10 +13,12 @@ import {
     TableBodyCell,
     ButtonFilter,
     Badge,
+    Loading,
+    Empty,
     BadgeColorProps
 } from "../../../components";
 import { useStore } from "../../../context";
-import { Actions, fetchIpos } from "../../../store";
+import { Actions, fetchIpos, IpoQueryBy } from "../../../store";
 import {
     createKeyFromTwoDates,
     getIpoQueryRange,
@@ -52,13 +54,17 @@ const CalendarCard = styled(Card)`
     height: calc(100% - 8rem);
 `;
 
-type QueryBy = "weekly" | "monthly";
-type QueryNext = "prev" | "next";
+const IPO_STATUS_BADGE_MAP = {
+    withdrawn: "red",
+    priced: "blue",
+    filed: "yellow",
+    expected: "green"
+};
 
 export const IpoCalendar = () => {
     const {
         state: {
-            ipoCalendar: { data, currentMonth, currentWeek, queryBy }
+            ipoCalendar: { data, currentMonth, currentWeek, queryBy, isLoading }
         },
         dispatch
     } = useStore();
@@ -77,17 +83,17 @@ export const IpoCalendar = () => {
     const setNewQueryBy = async (value: string) => {
         dispatch({
             type: Actions.SET_QUERY_BY,
-            payload: { queryBy: value as QueryBy }
+            payload: { queryBy: value as IpoQueryBy }
         });
     };
-    const renderQueryPeriodText = (queryBy: QueryBy) => {
+    const renderQueryPeriodText = (queryBy: IpoQueryBy) => {
         if (queryBy === "weekly") {
             return `${currentWeek.from} - ${currentWeek.to}`;
         }
         return `${currentMonth.from} - ${currentMonth.to}`;
     };
 
-    const getCurrentPeriodKey = (queryBy: QueryBy) => {
+    const getCurrentPeriodKey = (queryBy: IpoQueryBy) => {
         if (queryBy === "weekly") {
             return createKeyFromTwoDates(currentWeek.from, currentWeek.to);
         }
@@ -96,7 +102,7 @@ export const IpoCalendar = () => {
 
     const currentPeriodKey = getCurrentPeriodKey(queryBy);
 
-    const getIpos = (queryNext: QueryNext) => {
+    const getIpos = (queryNext: "prev" | "next") => {
         const { from, to } = getIpoQueryRange(
             queryNext,
             queryBy,
@@ -104,13 +110,6 @@ export const IpoCalendar = () => {
             currentWeek
         );
         fetchIpos(from, to, queryBy, data, dispatch);
-    };
-
-    const IPO_STATUS_BADGE_MAP = {
-        withdrawn: "red",
-        priced: "blue",
-        filed: "yellow",
-        expected: "green"
     };
 
     return (
@@ -145,6 +144,8 @@ export const IpoCalendar = () => {
                         <TableHeadCell>Total Shares Value</TableHeadCell>
                         <TableHeadCell>Status</TableHeadCell>
                     </TableHead>
+                    {isLoading && <Loading />}
+
                     <TableBody>
                         {data?.[queryBy][currentPeriodKey]?.map(
                             (company, idx) => {
@@ -157,9 +158,59 @@ export const IpoCalendar = () => {
                                             {company.name}
                                         </TableBodyCell>
                                         <TableBodyCell align="center">
-                                            <Badge>
-                                                {company.symbol || "N/A"}
+                                            {company.symbol && (
+                                                <Badge>{company.symbol}</Badge>
+                                            )}
+                                        </TableBodyCell>
+                                        <TableBodyCell>
+                                            {company.exchange}
+                                        </TableBodyCell>
+                                        <TableBodyCell>
+                                            {formatNumber(
+                                                company.numberOfShares
+                                            )}
+                                        </TableBodyCell>
+                                        <TableBodyCell>
+                                            {company.price && (
+                                                <Badge color="blue">
+                                                    $ {company.price}
+                                                </Badge>
+                                            )}
+                                        </TableBodyCell>
+                                        <TableBodyCell>
+                                            {formatFunds(
+                                                company.totalSharesValue
+                                            )}
+                                        </TableBodyCell>
+                                        <TableBodyCell>
+                                            <Badge
+                                                color={
+                                                    IPO_STATUS_BADGE_MAP[
+                                                        company.status
+                                                    ] as BadgeColorProps
+                                                }
+                                            >
+                                                {company.status}
                                             </Badge>
+                                        </TableBodyCell>
+                                    </TableRow>
+                                );
+                            }
+                        )}
+                        {data?.[queryBy][currentPeriodKey]?.map(
+                            (company, idx) => {
+                                return (
+                                    <TableRow key={idx}>
+                                        <TableRowHeadCell>
+                                            {company.date}
+                                        </TableRowHeadCell>
+                                        <TableBodyCell>
+                                            {company.name}
+                                        </TableBodyCell>
+                                        <TableBodyCell align="center">
+                                            {company.symbol && (
+                                                <Badge>{company.symbol}</Badge>
+                                            )}
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.exchange}
@@ -197,6 +248,10 @@ export const IpoCalendar = () => {
                             }
                         )}
                     </TableBody>
+
+                    {!data?.[queryBy][currentPeriodKey]?.length && (
+                        <Empty text="There are not IPO scheduled for this period" />
+                    )}
                 </Table>
             </CalendarCard>
         </>

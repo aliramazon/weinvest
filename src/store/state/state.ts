@@ -28,6 +28,7 @@ export interface IpoCalendarState {
     currentWeek: IpoCalendarRange;
     currentMonth: IpoCalendarRange;
     queryBy: IpoQueryBy;
+    isLoading: boolean;
 }
 
 export interface GlobalState {
@@ -43,7 +44,7 @@ export const initialState = {
         data: { weekly: {}, monthly: {} },
         currentWeek: {
             from: moment()
-                .year(2022)
+                .year(2010)
                 .week(1)
                 .startOf("isoWeek")
                 .format("YYYY-MM-DD"),
@@ -61,6 +62,7 @@ export const initialState = {
                 .format("YYYY-MM-DD"),
             to: moment().year(2022).month(0).endOf("month").format("YYYY-MM-DD")
         },
-        queryBy: "weekly"
+        queryBy: "weekly",
+        isLoading: true
     }
 } as GlobalState;

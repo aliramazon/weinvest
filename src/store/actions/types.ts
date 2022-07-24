@@ -44,9 +44,17 @@ interface SetIpoQueryBy {
     };
 }
 
+interface SetIpoCalendarIsLoading {
+    type: IpoCalendarActions.SET_IS_LOADING;
+    payload: {
+        isLoading: boolean;
+    };
+}
+
 export type ActionType =
     | FetchFundsDataAction
     | SortFundsInvestedIn
     | FetchCompaniesData
     | FetchIpoCalendar
-    | SetIpoQueryBy;
+    | SetIpoQueryBy
+    | SetIpoCalendarIsLoading;

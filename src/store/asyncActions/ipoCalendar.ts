@@ -26,9 +26,17 @@ export const fetchIpos = async (
     const periodKey = createKeyFromTwoDates(from, to);
     let ipos: CompanyIpo[] = [];
     if (!data[queryBy][periodKey]) {
+        dispatch({
+            type: Actions.SET_IS_LOADING,
+            payload: { isLoading: true }
+        });
         const { ipoCalendar } = await finnhub.fetchIPOCalendar(from, to);
         ipos = sortByDate([...ipoCalendar]);
     }
+    dispatch({
+        type: Actions.SET_IS_LOADING,
+        payload: { isLoading: false }
+    });
 
     dispatch({
         type: Actions.FETCH_IPOS,

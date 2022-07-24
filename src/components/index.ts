@@ -14,3 +14,5 @@ export * from "./PieChart";
 export * from "./VerticalBarChart";
 export * from "./DoughnutChart";
 export * from "./ButtonFilter";
+export * from "./Loading";
+export * from "./Empty";
