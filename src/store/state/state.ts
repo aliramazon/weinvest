@@ -44,7 +44,7 @@ export const initialState = {
         data: { weekly: {}, monthly: {} },
         currentWeek: {
             from: moment()
-                .year(2010)
+                .year(2022)
                 .week(1)
                 .startOf("isoWeek")
                 .format("YYYY-MM-DD"),

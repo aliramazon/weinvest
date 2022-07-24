@@ -249,9 +249,10 @@ export const IpoCalendar = () => {
                         )}
                     </TableBody>
 
-                    {!data?.[queryBy][currentPeriodKey]?.length && (
-                        <Empty text="There are not IPO scheduled for this period" />
-                    )}
+                    {!isLoading &&
+                        !data?.[queryBy][currentPeriodKey]?.length && (
+                            <Empty text="There are not IPO scheduled for this period" />
+                        )}
                 </Table>
             </CalendarCard>
         </>

@@ -8,7 +8,7 @@ export const ipoCalendar = (
     action: ActionType
 ): IpoCalendarState => {
     switch (action.type) {
-        case Actions.FETCH_IPOS:
+        case Actions.CACHE_IPOS:
             const periodKey = createKeyFromTwoDates(
                 action.payload.from,
                 action.payload.to

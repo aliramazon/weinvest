@@ -39,7 +39,7 @@ export const fetchIpos = async (
     });
 
     dispatch({
-        type: Actions.FETCH_IPOS,
+        type: Actions.CACHE_IPOS,
         payload: {
             from,
             to,

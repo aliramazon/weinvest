@@ -28,7 +28,7 @@ interface SortFundsInvestedIn {
 }
 
 interface FetchIpoCalendar {
-    type: IpoCalendarActions.FETCH_IPOS;
+    type: IpoCalendarActions.CACHE_IPOS;
     payload: {
         from: string;
         to: string;
