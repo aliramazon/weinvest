@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { TableRowProps } from './types';
+import React from "react";
+import styled from "styled-components";
+import { TableRowProps } from "./types";
 
 export const TableRowBase = styled.div`
     display: grid;

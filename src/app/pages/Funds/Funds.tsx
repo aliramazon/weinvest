@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { RowLink } from "../../../components";
 
 import {
-    AppContentLayout,
     AppContentHeader,
-    TableCard,
+    Card,
     Table,
     TableHead,
     TableBody,
@@ -19,10 +18,11 @@ import { useStore } from "../../../context";
 import { Actions } from "../../../store";
 import { Fund } from "../../../types";
 
-const Container = styled(TableCard)`
+const Container = styled(Card)`
     display: grid;
     grid-template-columns: 30rem 0.5rem 1fr;
     gap: var(--spacing-7);
+    height: calc(100% - 4rem);
 `;
 
 export const Funds = () => {
@@ -48,7 +48,7 @@ export const Funds = () => {
     }, [data]);
 
     return (
-        <AppContentLayout>
+        <>
             <AppContentHeader title="Funds" />
             <Container>
                 <Table>
@@ -73,6 +73,6 @@ export const Funds = () => {
                 <Seperator />
                 <Outlet />
             </Container>
-        </AppContentLayout>
+        </>
     );
 };

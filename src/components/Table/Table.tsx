@@ -1,16 +1,9 @@
-import styled from 'styled-components';
-import { Card } from '../Card/Card';
+import styled from "styled-components";
 
 export const Table = styled.div`
     height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: inherit;
-`;
-
-export const TableCard = styled(Card)`
-    min-height: 0;
+    overflow-y: auto;
+    overflow-x: auto;
 `;
 
 export const Seperator = styled.div`

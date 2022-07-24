@@ -1,7 +1,7 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle, css } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`${css`
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700&display=swap");
     :root {
         // COLORS
         --generalColor-100: #131523;
@@ -133,7 +133,7 @@ const GlobalStyle = createGlobalStyle`${css`
     html,
     body {
         text-size-adjust: none;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
 
         // FOR IE
         scrollbar-face-color: var(--generalColor-40);

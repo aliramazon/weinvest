@@ -17,7 +17,7 @@ const Container = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: var(--spacing-5);
-    min-height: 0;
+    height: 100%;
 `;
 
 const VisualContent = styled(Card)`

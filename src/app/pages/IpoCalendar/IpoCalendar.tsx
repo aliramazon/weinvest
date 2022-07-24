@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import {
-    AppContentLayout,
     AppContentHeader,
-    TableCard,
+    Card,
     Table,
     TableHead,
     TableBody,
@@ -14,7 +13,7 @@ import {
     ButtonFilter
 } from "../../../components";
 import { useStore } from "../../../context";
-import { Actions, fetchIpos, IpoCalendarState } from "../../../store";
+import { Actions, fetchIpos } from "../../../store";
 import { createKeyFromTwoDates } from "../../../utils";
 
 const CalendarControl = styled.div`
@@ -36,6 +35,9 @@ const CalendarControl = styled.div`
             cursor: pointer;
         }
     }
+`;
+const CalendarCard = styled(Card)`
+    height: calc(100% - 4rem);
 `;
 
 type QueryBy = "weekly" | "monthly";
@@ -96,7 +98,7 @@ export const IpoCalendar = () => {
     };
 
     return (
-        <AppContentLayout>
+        <>
             <AppContentHeader title="IPO Calendar">
                 <CalendarControl>
                     <ButtonFilter
@@ -115,7 +117,7 @@ export const IpoCalendar = () => {
                     </div>
                 </CalendarControl>
             </AppContentHeader>
-            <TableCard>
+            <CalendarCard>
                 <Table>
                     <TableHead>
                         <TableHeadCell>Date</TableHeadCell>
@@ -162,7 +164,7 @@ export const IpoCalendar = () => {
                         )}
                     </TableBody>
                 </Table>
-            </TableCard>
-        </AppContentLayout>
+            </CalendarCard>
+        </>
     );
 };

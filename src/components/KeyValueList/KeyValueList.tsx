@@ -3,9 +3,9 @@ import {
     TableBody,
     TableRow,
     TableBodyCell,
-    TableRowHeadCell,
-    TableCard
-} from '../Table';
+    TableRowHeadCell
+} from "../Table";
+import { Card } from "../Card";
 
 export interface KeyValueInterface {
     key: string;
@@ -18,24 +18,20 @@ interface KeyValueListProps {
 
 export const KeyValueList: React.FC<KeyValueListProps> = ({ data }) => {
     return (
-        <TableCard>
-            <Table>
-                <TableBody>
-                    {data &&
-                        data.map((item: KeyValueInterface) => {
-                            return (
-                                <TableRow key={`${item.key}${item.value}`}>
-                                    <TableRowHeadCell>
-                                        {item.key}
-                                    </TableRowHeadCell>
-                                    <TableBodyCell align="right">
-                                        {item.value}
-                                    </TableBodyCell>
-                                </TableRow>
-                            );
-                        })}
-                </TableBody>
-            </Table>
-        </TableCard>
+        <Card>
+            <TableBody>
+                {data &&
+                    data.map((item: KeyValueInterface) => {
+                        return (
+                            <TableRow key={`${item.key}${item.value}`}>
+                                <TableRowHeadCell>{item.key}</TableRowHeadCell>
+                                <TableBodyCell align="right">
+                                    {item.value}
+                                </TableBodyCell>
+                            </TableRow>
+                        );
+                    })}
+            </TableBody>
+        </Card>
     );
 };

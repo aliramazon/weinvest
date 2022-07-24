@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Logo } from '../Logo/Logo';
+import styled from "styled-components";
+import { Logo } from "../Logo/Logo";
 
 const AppHeaderBase = styled.header`
     background-color: var(--whiteColor);
@@ -10,9 +10,9 @@ const AppHeaderBase = styled.header`
     z-index: 1;
     display: flex;
     align-items: center;
-
-    grid-column: 1/3;
-    grid-row: 1/2;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 `;
 
 export const AppHeader = () => {

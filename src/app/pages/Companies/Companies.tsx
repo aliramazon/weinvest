@@ -5,9 +5,8 @@ import { RowLink } from "../../../components";
 import styled from "styled-components";
 
 import {
-    AppContentLayout,
     AppContentHeader,
-    TableCard,
+    Card,
     Table,
     TableHead,
     TableBody,
@@ -20,10 +19,13 @@ import { Actions } from "../../../store";
 import { Company } from "../../../types";
 
 const Container = styled.div`
-    display: grid;
-    grid-template-columns: 30rem 1fr;
+    display: flex;
     gap: var(--spacing-7);
-    min-height: 0;
+    height: calc(100% - 4rem);
+`;
+
+const CompaniesCard = styled(Card)`
+    flex-basis: 30rem;
 `;
 
 export const Companies = () => {
@@ -49,10 +51,10 @@ export const Companies = () => {
     }, [data]);
 
     return (
-        <AppContentLayout>
+        <>
             <AppContentHeader title="Companies" />
             <Container>
-                <TableCard>
+                <CompaniesCard>
                     <Table>
                         <TableHead>
                             <TableHeadCell>Company Name</TableHeadCell>
@@ -75,9 +77,9 @@ export const Companies = () => {
                                 })}
                         </TableBody>
                     </Table>
-                </TableCard>
+                </CompaniesCard>
                 <Outlet />
             </Container>
-        </AppContentLayout>
+        </>
     );
 };

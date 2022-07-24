@@ -1,18 +1,15 @@
-import styled from 'styled-components';
-export const AppLayout = styled.div`
-    display: grid;
-    grid-template-columns: 25rem 1fr;
-    grid-template-rows: 6.8rem 1fr;
-    height: 100vh;
-`;
+import styled from "styled-components";
 
-export const AppContentLayout = styled.div`
-    padding: var(--spacing-8);
+export const AppContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`;
+export const AppContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: var(--spacing-7);
-
-    grid-column: 2/3;
-    grid-row: 2/3;
+    padding: var(--spacing-8);
+    width: calc(100% - 25rem);
     height: calc(100vh - 6.8rem);
+    overflow: auto;
 `;
