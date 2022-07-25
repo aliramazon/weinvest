@@ -1,7 +1,6 @@
 import { IpoCalendarState } from "../state";
 import { ActionType, Actions } from "../actions";
 import { createKeyFromTwoDates } from "../../utils";
-import { Action } from "history";
 
 export const ipoCalendar = (
     state = {} as IpoCalendarState,

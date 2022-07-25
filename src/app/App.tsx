@@ -12,7 +12,7 @@ function App() {
         if (location.pathname === "/") {
             navigate("/ipo-calendar");
         }
-    }, []);
+    }, [location.pathname, navigate]);
     return (
         <>
             <GlobalStyle />

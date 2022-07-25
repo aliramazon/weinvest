@@ -1,10 +1,4 @@
-import {
-    Table,
-    TableBody,
-    TableRow,
-    TableBodyCell,
-    TableRowHeadCell
-} from "../Table";
+import { TableBody, TableRow, TableBodyCell, TableRowHeadCell } from "../Table";
 import { Card } from "../Card";
 
 export interface KeyValueInterface {
