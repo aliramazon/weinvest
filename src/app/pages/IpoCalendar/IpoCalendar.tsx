@@ -216,9 +216,10 @@ export const IpoCalendar = () => {
                                             {company.exchange}
                                         </TableBodyCell>
                                         <TableBodyCell>
-                                            {formatNumber(
-                                                company.numberOfShares
-                                            )}
+                                            {company.numberOfShares &&
+                                                formatNumber(
+                                                    company.numberOfShares
+                                                )}
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.price && (
