@@ -172,7 +172,7 @@ export const IpoCalendar = () => {
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.price && (
-                                                <Badge color="blue">
+                                                <Badge color="green">
                                                     $ {company.price}
                                                 </Badge>
                                             )}
@@ -223,7 +223,7 @@ export const IpoCalendar = () => {
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.price && (
-                                                <Badge color="blue">
+                                                <Badge color="yellow">
                                                     $ {company.price}
                                                 </Badge>
                                             )}
