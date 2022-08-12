@@ -1,8 +1,8 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { Badge } from "../Badge";
+import { BadgeBase } from "../Badge";
 
-const ClickableBadge = styled(Badge)`
+const ClickableBadge = styled(BadgeBase)`
     cursor: pointer;
 `;
 
@@ -32,7 +32,7 @@ const ButtonFilter: FC<ButtonFilterProps> = ({
             {data.map((item) => {
                 return (
                     <ClickableBadge
-                        color="blue"
+                        variant="blue"
                         light={activeIndex !== item.value}
                         onClick={() => onClick(item.value)}
                         key={item.value}

@@ -1,11 +1,12 @@
+import { FC } from "react";
 import styled, { css } from "styled-components";
 
-export type BadgeColorProps = "blue" | "green" | "red" | "yellow";
+export type BadgeVariantProps = "blue" | "green" | "red" | "yellow";
 export interface BadgeProps {
-    color?: BadgeColorProps;
+    variant?: BadgeVariantProps;
     light?: boolean;
 }
-export const Badge = styled.div<BadgeProps>`
+export const BadgeBase = styled.div<BadgeProps>`
     height: 2.4rem;
     padding: 0 8px;
     width: 100%;
@@ -20,7 +21,7 @@ export const Badge = styled.div<BadgeProps>`
     font-size: var(--font-size-2);
 
     ${(props) =>
-        props.color === "blue" &&
+        props.variant === "blue" &&
         css`
             background-color: ${(props: BadgeProps) =>
                 props.light
@@ -31,7 +32,7 @@ export const Badge = styled.div<BadgeProps>`
         `}
 
     ${(props) =>
-        props.color === "green" &&
+        props.variant === "green" &&
         css`
             background-color: ${(props: BadgeProps) =>
                 props.light ? "var(--greenColor-40)" : "var(--greenColor-90)"};
@@ -40,7 +41,7 @@ export const Badge = styled.div<BadgeProps>`
         `}
 
     ${(props) =>
-        props.color === "red" &&
+        props.variant === "red" &&
         css`
             background-color: ${(props: BadgeProps) =>
                 props.light ? "var(--redColor-40)" : "var(--redColor-90)"};
@@ -49,7 +50,7 @@ export const Badge = styled.div<BadgeProps>`
         `}
 
     ${(props) =>
-        props.color === "yellow" &&
+        props.variant === "yellow" &&
         css`
             background-color: ${(props: BadgeProps) =>
                 props.light
@@ -59,3 +60,11 @@ export const Badge = styled.div<BadgeProps>`
                 props.light ? "var(--yellowColor-100)" : "var(--whiteColor)"};
         `}
 `;
+
+export const Badge: FC<BadgeProps> = ({ variant, light, children }) => {
+    return (
+        <BadgeBase light={light} variant={variant}>
+            {children}
+        </BadgeBase>
+    );
+};

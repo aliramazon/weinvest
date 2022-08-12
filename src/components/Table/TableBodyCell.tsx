@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { TableCell } from './TableCell';
-import { TableCellProps } from './types';
+import styled from "styled-components";
+import { TableCell } from "./TableCell";
+import { TableCellProps } from "./types";
 
 const TableBodyCellBase = styled(TableCell)`
     color: var(--generalColor-100);

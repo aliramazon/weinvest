@@ -63,7 +63,7 @@ export const Fund = () => {
                                     {company.name}
                                 </TableRowHeadCell>
                                 <TableBodyCell>
-                                    <Badge color="green" light>
+                                    <Badge variant="green" light>
                                         {company.investedRound}
                                     </Badge>
                                 </TableBodyCell>
@@ -81,7 +81,7 @@ export const Fund = () => {
                                     {formatFunds(company.impliedValue)}
                                 </TableBodyCell>
                                 <TableBodyCell>
-                                    <Badge color="blue" light>
+                                    <Badge variant="blue" light>
                                         {roundNumber(company.multiple)}
                                     </Badge>
                                 </TableBodyCell>

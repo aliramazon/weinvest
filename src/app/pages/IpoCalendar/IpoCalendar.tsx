@@ -15,7 +15,7 @@ import {
     Badge,
     Loading,
     Empty,
-    BadgeColorProps
+    BadgeVariantProps
 } from "../../../components";
 import { useStore } from "../../../context";
 import { Actions, fetchIpos, IpoQueryBy } from "../../../store";
@@ -172,7 +172,7 @@ export const IpoCalendar = () => {
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.price && (
-                                                <Badge color="green">
+                                                <Badge variant={"green"}>
                                                     $ {company.price}
                                                 </Badge>
                                             )}
@@ -184,10 +184,10 @@ export const IpoCalendar = () => {
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             <Badge
-                                                color={
+                                                variant={
                                                     IPO_STATUS_BADGE_MAP[
                                                         company.status
-                                                    ] as BadgeColorProps
+                                                    ] as BadgeVariantProps
                                                 }
                                             >
                                                 {company.status}
@@ -200,7 +200,7 @@ export const IpoCalendar = () => {
                         {data?.[queryBy][currentPeriodKey]?.map(
                             (company, idx) => {
                                 return (
-                                    <TableRow key={idx}>
+                                    <TableRow key={`${idx}${company.name}`}>
                                         <TableRowHeadCell>
                                             {company.date}
                                         </TableRowHeadCell>
@@ -223,7 +223,7 @@ export const IpoCalendar = () => {
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.price && (
-                                                <Badge color="yellow">
+                                                <Badge variant="blue">
                                                     $ {company.price}
                                                 </Badge>
                                             )}
@@ -235,10 +235,10 @@ export const IpoCalendar = () => {
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             <Badge
-                                                color={
+                                                variant={
                                                     IPO_STATUS_BADGE_MAP[
                                                         company.status
-                                                    ] as BadgeColorProps
+                                                    ] as BadgeVariantProps
                                                 }
                                             >
                                                 {company.status}
