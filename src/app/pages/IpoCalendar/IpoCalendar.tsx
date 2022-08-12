@@ -172,57 +172,6 @@ export const IpoCalendar = () => {
                                         </TableBodyCell>
                                         <TableBodyCell>
                                             {company.price && (
-                                                <Badge variant={"green"}>
-                                                    $ {company.price}
-                                                </Badge>
-                                            )}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {formatFunds(
-                                                company.totalSharesValue
-                                            )}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            <Badge
-                                                variant={
-                                                    IPO_STATUS_BADGE_MAP[
-                                                        company.status
-                                                    ] as BadgeVariantProps
-                                                }
-                                            >
-                                                {company.status}
-                                            </Badge>
-                                        </TableBodyCell>
-                                    </TableRow>
-                                );
-                            }
-                        )}
-                        {data?.[queryBy][currentPeriodKey]?.map(
-                            (company, idx) => {
-                                return (
-                                    <TableRow key={`${idx}${company.name}`}>
-                                        <TableRowHeadCell>
-                                            {company.date}
-                                        </TableRowHeadCell>
-                                        <TableBodyCell>
-                                            {company.name}
-                                        </TableBodyCell>
-                                        <TableBodyCell align="center">
-                                            {company.symbol && (
-                                                <Badge>{company.symbol}</Badge>
-                                            )}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {company.exchange}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {company.numberOfShares &&
-                                                formatNumber(
-                                                    company.numberOfShares
-                                                )}
-                                        </TableBodyCell>
-                                        <TableBodyCell>
-                                            {company.price && (
                                                 <Badge variant="blue">
                                                     $ {company.price}
                                                 </Badge>
