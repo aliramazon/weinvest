@@ -9,7 +9,7 @@ const ClickableBadge = styled(BadgeBase)`
 const ButtonFilterBase = styled.div`
     display: flex;
     align-items: center;
-    gap: var(--spacing-2);
+    gap: 0 !important;
     width: max-content;
     height: 2.8rem;
     padding: 0 var(--spacing-1);
