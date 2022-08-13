@@ -25,7 +25,7 @@ export const SIDE_NAV_LINKS_GROUPS: SideNavLinksGroupProps[] = [
             {
                 to: "archive",
                 text: "Archive",
-                icon: "documents"
+                icon: "due-documents"
             },
             {
                 to: "documents",
