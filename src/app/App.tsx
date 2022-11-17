@@ -3,6 +3,7 @@ import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { AppHeader, SideNav, AppContent, AppContainer } from "../components";
 import GlobalStyle from "../GlobalStyle";
 import { SIDE_NAV_LINKS_GROUPS } from "./router";
+import "../global.css";
 
 function App() {
     const navigate = useNavigate();
@@ -15,7 +16,6 @@ function App() {
     }, [location.pathname, navigate]);
     return (
         <>
-            <GlobalStyle />
             <AppContainer>
                 <AppHeader />
                 <SideNav links={SIDE_NAV_LINKS_GROUPS} />
