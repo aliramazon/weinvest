@@ -3,7 +3,7 @@ export const SIDE_NAV_LINKS_GROUPS: SideNavLinksGroupProps[] = [
     {
         links: [
             {
-                to: "/ipo-calendar",
+                to: "/",
                 text: "IPO Calendar",
                 icon: "dashboard"
             },

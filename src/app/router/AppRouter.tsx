@@ -8,7 +8,6 @@ export const AppRouter = () => {
             <Routes>
                 <Route path="/" element={<App />}>
                     <Route index element={<IpoCalendar />} />
-                    <Route path="ipo-calendar" element={<IpoCalendar />} />
                     <Route path="funds" element={<Funds />}>
                         <Route path=":fundId" element={<Fund />} />
                     </Route>
