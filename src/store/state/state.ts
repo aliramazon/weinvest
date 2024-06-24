@@ -44,25 +44,29 @@ export const initialState = {
         data: { weekly: {}, monthly: {} },
         currentWeek: {
             from: moment()
-                .year(2022)
+                .year(2024)
                 .week(1)
                 .startOf("isoWeek")
                 .format("YYYY-MM-DD"),
             to: moment()
-                .year(2022)
+                .year(2024)
                 .week(1)
                 .endOf("isoWeek")
-                .format("YYYY-MM-DD")
+                .format("YYYY-MM-DD"),
         },
         currentMonth: {
             from: moment()
-                .year(2022)
+                .year(2024)
                 .month(0)
                 .startOf("month")
                 .format("YYYY-MM-DD"),
-            to: moment().year(2022).month(0).endOf("month").format("YYYY-MM-DD")
+            to: moment()
+                .year(2024)
+                .month(0)
+                .endOf("month")
+                .format("YYYY-MM-DD"),
         },
         queryBy: "weekly",
-        isLoading: true
-    }
+        isLoading: true,
+    },
 } as GlobalState;

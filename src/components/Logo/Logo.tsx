@@ -6,5 +6,5 @@ const LogoBase = styled.span`
     font-weight: var(--font-weight-600);
 `;
 export const Logo = () => {
-    return <LogoBase>investable.</LogoBase>;
+    return <LogoBase>weinvest</LogoBase>;
 };
